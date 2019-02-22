@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+
+		<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+		<title>Login</title>
+	</head>
+	<body>
+		<div class="container box">
+			<header>
+				<h2>Use your username to login</h2>
+			</header>
+			
+			<div id="login">
+				<form>
+					<input class="username" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="Username">
+					<i class="fas fa-user username_icon "></i>
+				</form>
+				<form>
+					<input class="password" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="Password">
+					<i class="fas fa-lock password_icon"></i>
+				</form>
+				<div>
+					<input class="button" type="button" value="Login" onclick="window.location.href=''" />
+				</div>
+			</div>
+			<div id="password_hint">
+				<h4>Forget Passwords?</h4>
+			</div>
+		</div>
+	</body>
+</html>

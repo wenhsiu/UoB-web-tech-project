@@ -1,0 +1,60 @@
+html {
+    text-align: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-image: url("../img/bkImg_blue.jpg");
+    height: 100%;
+    background-color: #fcfbf6;
+    background-size: auto 90%; 
+    margin: auto;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
+
+
+.container {
+    margin-top: 100px;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+
+header {
+    color: #013243;
+}
+
+.title { 
+    font-size: 50px;
+}
+
+.subTitle { 
+    font-size: 30px;
+}
+
+.link {
+    margin-top: 100px;
+}
+
+.button {
+    color: #ffa6aa;
+    font-size: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 0;
+    
+    -webkit-box-shadow: 0 10px 6px -6px #ccc;;
+    -moz-box-shadow: 0 10px 6px -6px #ccc;;
+    box-shadow: 0 10px 6px -6px #ccc;
+}
+
+.button:hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset;
+    position: relative;
+}
