@@ -7,7 +7,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="css/login&register-general.css">
 		<link rel="stylesheet" type="text/css" href="css/login&register-small.css">
-		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<link rel="stylesheet" type="text/css" href="css/register.css">
 
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -15,13 +15,13 @@
 		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
-		<title>Login</title>
+		<title>Join</title>
 	</head>
 
 	<body>
 		<div class="container box">
 			<header>
-				<h1 class="title">Use Your Username to Login</h1>
+				<h1 class="title">Register</h1>
 			</header>
 			
 			<div id="login">
@@ -33,19 +33,18 @@
 					<input class="password" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="Password">
 					<i class="fas fa-lock password_icon"></i>
 				</form>
+				<form>
+					<input class="hint" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="Password hint">
+					<i class="fas fa-bell hint_icon"></i>
+				</form>
 				<div>
-					<input class="button" type="button" value="Login" onclick="window.location.href=''" />
+					<input class="button" type="button" value="Join" onclick="window.location.href=''" />
 				</div>
 			</div>
-
-			<div class="password_hint">
-				<span>Forget Passwords?</span>
-				<!-- this might be an link/ button -->
-			</div>
 			
-			<div class="new_member">
-				<span>Not a member?</span>
-				<a href="register.html">Join Now!</a>
+			<div class="old_member">
+				<span>Already a member?</span>
+				<a href="login.html">Sign in!</a>
 			</div>
 		</div>
 	</body>

@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+package-lock.json
+site/.DS_Store
+zip.txt
+color_code.pages

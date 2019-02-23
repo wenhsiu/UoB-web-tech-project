@@ -1,4 +1,4 @@
-.username, .password {
+.username, .password, .hint {
 	width: 50%;
 	height: 40px;
 	padding: 0px 10px;
@@ -16,15 +16,11 @@
 	border-radius: 5px 5px 0 0;
 }
 
-.password {
+.hint {
 	border-radius: 0 0 5px 5px;
 }
 
-.password_hint {
-	padding: 5px 0 10px;
-}
-
-.new_member {
+.old_member {
 	padding: 5px 0 30px;
 }
 
