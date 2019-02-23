@@ -43,15 +43,15 @@ header {
     color: #ffa6aa;
     font-size: 20px;
     background-color: #ffffff;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 5px;
     width: 200px;
     height: 40px;
     margin: 10px 0;
     
-    -webkit-box-shadow: 0 10px 6px -6px #ccc;;
-    -moz-box-shadow: 0 10px 6px -6px #ccc;;
-    box-shadow: 0 10px 6px -6px #ccc;
+    -webkit-box-shadow: 0 10px 6px -6px #cccccc;;
+    -moz-box-shadow: 0 10px 6px -6px #cccccc;;
+    box-shadow: 0 10px 6px -6px #cccccc;
 }
 
 .button:hover {
