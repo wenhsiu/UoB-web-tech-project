@@ -1,5 +1,4 @@
 class LoginForm extends React.Component{					
-    //const axios = require('axios');
     state = {
         account: "",
         password: ""
