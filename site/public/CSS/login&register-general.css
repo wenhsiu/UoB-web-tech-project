@@ -8,7 +8,7 @@ html {
 body {
     /*background-image: url("../img/14885.jpg");*/
     /*height: 100%;*/
-    background-color: #9fd0e1;
+    background-color: #fcfbf6;
     /*background-size: 450px; */
     margin: auto;
 }
@@ -25,7 +25,7 @@ body {
 
 .box {
 	border-radius: 10px;
-	background: #fcfbf6;
+	background: #b7dcec;
 	padding: 3px 0;
 }
 
@@ -57,9 +57,9 @@ i {
 
 .button {
     font-family: 'Open Sans', sans-serif;
-    color: #ffffff;
+    color: #ffa6aa;
     font-size: 20px;
-    background-color: #ffa6aa;
+    background-color: #ffffff;
     border-radius: 5px;
     width: 200px;
     height: 40px;
