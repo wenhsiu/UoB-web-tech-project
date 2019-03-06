@@ -1,5 +1,4 @@
-class LoginForm extends React.Component{					
-    
+class LoginForm extends React.Component{
     state = {
         account: "",
         password: ""
