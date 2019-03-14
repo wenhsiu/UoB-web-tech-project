@@ -1,7 +1,7 @@
 "use strict"
 
 const mysql = require('mysql');
-const express = require('express')
+const express = require('express');
 var app = express();
 const bodyparer = require('body-parser');
 app.use(bodyparer.json());
@@ -23,11 +23,19 @@ app.get('/*', (req, res)=>{
     var page = req.originalUrl
     res.sendFile("public/" + page, {root: __dirname })
 })
-app.post('/*', (req, res) => {
-    console.log(req.body);
-    let item = req.body;
-    var sql = "SET @ItemName = ?; SET @Description = ?; SET @OwnerId = ?; SET @Excahnge = ?; \
-    SET @DATE = NOW(); SET @Details = ?; SET @Category = ?; SET @Id = ?";//define variables
+app.post('/UserLogin', (req, res) => {
+    let item = req.body;   
+    var dbCmd = "SElECT Password FROM members WHERE Username = " + '\'' + item.account + '\'';
+    console.log(dbCmd);
+    mysqlConnection.query(dbCmd, (err, rows, fields) => {
+        var status;
+
+        if(err){status = false;}
+        else if(rows.length === 0 || rows[0].Password !== item.password){status = false;}
+        else {status = true;}
+        
+        res.send(status);
+    })
 })
 
 app.listen(8080, ()=>{
