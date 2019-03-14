@@ -4,17 +4,19 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- <link rel="stylesheet" type="text/css" href="css/login&register-general.css">
-		<link rel="stylesheet" type="text/css" href="css/login&register-small.css"> -->
-		<link rel="stylesheet" type="text/css" href="css/upload_item.css" />
+		<link rel="stylesheet" type="text/css" href="css/upload_item-small.css">
+		<link rel="stylesheet" type="text/css" href="css/upload_item.css">
 
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
 		<script src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" data-auto-replace-svg="nest"></script>
 		<script type="text/javascript" src="js/upload_item.js" defer="defer"></script>
+		<script  src="js/uploadR.js"></script>
 
 		<title>Upload Your Items</title>
 	</head>
@@ -26,14 +28,17 @@
 			</header>
 
 			<div id="item_container">
-				<canvas width="300"><i class="fas fa-cloud-upload-alt"></i></canvas>
+
+				<div id="image">
+					<!-- <input type="file" id="file" class="uploadfile"/> -->
+				</div>
 
 				<div class="item">
 					<form>
 						<input class="item_name" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="item name">
 					</form>
 					<form>
-						<input class="item_value" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="Exchange items/ value">
+						<input class="item_value" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="Exchange items/ value, ex: a cup of coffee">
 					</form>
 					<form>
 						<input class="item_location" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="item location">
@@ -45,13 +50,12 @@
 				</div>
 			</div>
 
-			<div>
-				<input type="file" id="file" class="uploadfile"/>  
-				<label for="file">Choose a file</label>
-			</div>
+		<!-- 	<div>
+				<input type="file" id="file" class="uploadfile"/>
+			</div> -->
 
 			<div>
-				<input class="button" type="button" value="Post" />
+				<input class="button post" type="button" value="Post" />
 			</div>
 			
 		</div>

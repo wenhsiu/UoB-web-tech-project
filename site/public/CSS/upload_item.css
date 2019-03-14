@@ -1,15 +1,11 @@
 html {
-	/*align-items: center;*/
 	font-family: 'Open Sans', sans-serif;
 	color: #013243;
 }
 
 body {
-    /*background-image: url("../img/14885.jpg");*/
-    /*height: 100%;*/
-    background-color: #fcfbf6;
-    /*background-size: 450px; */
-    margin: auto;
+	background-color: #fcfbf6;
+	margin: auto;
 }
 
 header {
@@ -18,13 +14,10 @@ header {
 }
 
 .container {
-    /*margin-block-start: 1em;*/
-    margin-block-end: 1em;
- /*   margin-inline-start: 40px;
-    margin-inline-end: 40px;*/
-    margin: 50px auto;
-    bottom: auto;
-    width: 800px;
+	margin-block-end: 1em;
+	margin: 50px auto;
+	bottom: auto;
+	width: 800px;
 }
 
 .box {
@@ -36,29 +29,24 @@ header {
 #item_container {
 	display: flex;
 	margin: auto 10px;
-	/*float:left;*/
-	/*display: inline-block;*/
 }
 
-canvas {
+#image {
 	border-radius: 10px;
 	border: 1px solid #cccccc;
 	margin: 10px 20px;
 	background: #ffffff;
-	padding: 3px;
+	padding: 10px;
+	width: 50%;
 }
 
-/*.image_container: after {
-  content: "";
-  display: table;
-  clear: both;
-}*/
+img {
+	max-width: 100%;
+}
 
 .item {
-	/*float: left;*/
 	width: 50%;
 	margin: 10px 20px;
-	/*display: inline-block;*/
 }
 
 .item_name, .item_value, .item_location, .item_description {
@@ -86,55 +74,27 @@ canvas {
 }
 
 .button {
-    font-family: 'Open Sans', sans-serif;
-    color: #ffa6aa;
-    font-size: 20px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    width: 200px;
-    height: 40px;
-    margin: 20px 0;
-    
-    -webkit-box-shadow: 0 10px 6px -6px #ccc;;
-    -moz-box-shadow: 0 10px 6px -6px #ccc;;
-    box-shadow: 0 10px 6px -6px #ccc;
+	font-family: 'Open Sans', sans-serif;
+	color: #ffa6aa;
+	font-size: 20px;
+	background-color: #ffffff;
+	border-radius: 5px;
+	width: 200px;
+	height: 40px;
+	margin: 20px 0;
+	box-shadow: 0 10px 6px -6px #ccc;
 }
 
 .button:hover {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset;
-    position: relative;
-}
-/*
-.uploadfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset;
+	position: relative;
 }
 
-.uploadfile + label {
-	font-family: 'Open Sans', sans-serif;
-    color: #ffa6aa;
-    font-size: 20px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    width: 200px;
-    height: 40px;
-    margin: 20px 0;
-    
-    -webkit-box-shadow: 0 10px 6px -6px #ccc;;
-    -moz-box-shadow: 0 10px 6px -6px #ccc;;
-    box-shadow: 0 10px 6px -6px #ccc;
+#file {
+	margin: auto 50px;
 }
 
-
-.uploadfile:focus + label,
-.uploadfile + label:hover {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset;
-    position: relative;
+.post {
+	margin-left: 560px;
 }
 
-
-*/
