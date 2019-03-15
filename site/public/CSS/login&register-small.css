@@ -1,12 +1,12 @@
 @media screen and (max-width: 567px) {
-	.container {
+	#container {
 		width: 100%;
 	}
 }
 
 @media screen and (min-width: 568px) and (max-width: 830px) {
 
-	.container {
+	#container {
 		margin-top: 0;
 		margin: 1em auto;
 	}

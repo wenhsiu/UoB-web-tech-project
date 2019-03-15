@@ -11,25 +11,14 @@
 
 		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+		<script type="text/babel" src="js/homepage.js"></script>
 
 		<title>Welcome to Sharing within Bristol</title>
 	</head>
 
 	<body>
-		<div class="container">
-			<header>
-				<h1 class="title">Sharing within Bristol</h1>
-				<h2 class="subTitle">Share Your Unwanted Stuff or Get a Real Bargain Here!</h2>
-			</header>
-
-			<div class="link">
-				<form>
-					<input class="button" type="button" value="Login / Sign Up" onclick="window.location.href='login.html'" />
-				</form>
-				<form>
-					<input class="button" type="button" value="Browser the Stuff" onclick="window.location.href=''" />
-				</form>	
-			</div>
-		</div>
+		<div id="container"></div>
 	</body>
 </html>
