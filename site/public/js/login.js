@@ -23,7 +23,7 @@ class LoginForm extends React.Component{
     }
     render(){
         return(							
-            <div id="login">
+            <div className="box">
                  <header>
 				    <h1>Use Your Username to Login</h1>
 			    </header>

@@ -6,18 +6,12 @@ html {
 }
 
 body {
-    /*background-image: url("../img/14885.jpg");*/
-    /*height: 100%;*/
     background-color: #fcfbf6;
-    /*background-size: 450px; */
     margin: auto;
 }
 
 #container {
-    /*margin-block-start: 1em;*/
     margin-block-end: 1em;
- /*   margin-inline-start: 40px;
-    margin-inline-end: 40px;*/
     margin: 100px auto;
     bottom: auto;
     width: 560px;
@@ -64,9 +58,6 @@ i {
     width: 200px;
     height: 40px;
     margin: 20px 0;
-    
-    -webkit-box-shadow: 0 10px 6px -6px #ccc;;
-    -moz-box-shadow: 0 10px 6px -6px #ccc;;
     box-shadow: 0 10px 6px -6px #ccc;
 }
 
