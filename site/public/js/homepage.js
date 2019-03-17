@@ -1,4 +1,4 @@
-class HomepageURL extends React.Component{
+class EntranceURL extends React.Component{
 
     navigateToLogin() {
         window.location.href="login.html";
@@ -28,4 +28,4 @@ class HomepageURL extends React.Component{
     }
 }
 
-ReactDOM.render(<HomepageURL />, document.getElementById('container'));
+ReactDOM.render(<EntranceURL />, document.getElementById('container'));

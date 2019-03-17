@@ -5,6 +5,12 @@ class LoginForm extends React.Component{
         password: ""
     }
 
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+        }
+    }
+
     handleClick = (e) => {
         e.preventDefault()					
         axios.post('/UserLogin', this.state)
@@ -19,7 +25,7 @@ class LoginForm extends React.Component{
         this.setState({account: e.target.value})						
     }
     handlePWChange = (e) => {
-        this.setState({password: e.target.value})						
+        this.setState({password: e.target.value})				
     }
     render(){
         return(							
@@ -27,12 +33,12 @@ class LoginForm extends React.Component{
                  <header>
 				    <h1>Use Your Username to Login</h1>
 			    </header>
-                <form>
-                    <input className="username" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="Username" onChange={this.handleACChange}/>
+                <form  onKeyPress={this.handleKeyPress}>
+                    <input className="username" type="text" /*data-bind="textInput: filter, valueUpdate: 'afterkeydown'"*/ placeholder="Username" onChange={this.handleACChange} />
                     <i className="fas fa-user username_icon "></i>
                 </form>
-                <form>
-                    <input className="password" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="Password" onChange={this.handlePWChange}/>								
+                <form  onKeyPress={this.handleKeyPress}>
+                    <input className="password" type="password" /*data-bind="textInput: filter, valueUpdate: 'afterkeydown'"*/ placeholder="Password" onChange={this.handlePWChange}/>								
                     <i className="fas fa-lock password_icon"></i>	
                 </form>
                 <form>		

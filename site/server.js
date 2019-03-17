@@ -37,6 +37,22 @@ app.post('/UserLogin', (req, res) => {
         res.send(status);
     })
 })
+app.post('/UserRegister', (req, res) => {
+    let item = req.body;   
+    var dbCmd = "INSERT INTO members VALUES('" + item.account + "', '" + item.password + "', '" + item.hint + "')";
+    console.log(dbCmd);
+    mysqlConnection.query(dbCmd, (err,/* rows, fields*/ result) => {
+        var status;
+
+        if(err){status = false;}
+        else {status = true;
+            console.log("record inserted");
+        }
+        
+        res.send(status);
+    })
+})
+
 
 app.listen(8080, ()=>{
     console.log('Express server is now running and listen on port 8080.');
