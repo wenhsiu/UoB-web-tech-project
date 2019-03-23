@@ -16,7 +16,7 @@
 
 		<script src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" data-auto-replace-svg="nest"></script>
 		<script type="text/javascript" src="js/upload_item.js" defer="defer"></script>
-		<script  src="js/uploadR.js"></script>
+		<script  src="js/upload_item.js"></script>
 
 		<title>Upload Your Items</title>
 	</head>
@@ -44,15 +44,15 @@
 						<input class="item_location" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="item location">
 					</form>
 					<form>
-						<!-- <input class="item_description" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" placeholder="item description"> -->
+						<select>
+							<option></option>
+						</select>
+					</form>
+					<form>
 						<textarea class="item_description" maxlength="300" placeholder="description"></textarea>
 					</form>	
 				</div>
 			</div>
-
-		<!-- 	<div>
-				<input type="file" id="file" class="uploadfile"/>
-			</div> -->
 
 			<div>
 				<input class="button post" type="button" value="Post" />
