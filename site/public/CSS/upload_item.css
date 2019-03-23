@@ -49,7 +49,7 @@ img {
 	margin: 10px 20px;
 }
 
-.item_name, .item_value, .item_location, .item_description {
+.item_name, .item_value, .item_location, .item_description, .item_category {
 	width: 100%;
 	height: 40px;
 	padding: 0px 10px;

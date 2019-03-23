@@ -9,7 +9,7 @@ class EntranceURL extends React.Component{
     }
     render(){
         return(							
-            <div class="box">
+            <div className="box">
                 <header>
                     <h1 className="title">Sharing within Bristol</h1>
                     <h2 className="subTitle">Share Your Unwanted Stuff or Get a Real Bargain Here!</h2>
