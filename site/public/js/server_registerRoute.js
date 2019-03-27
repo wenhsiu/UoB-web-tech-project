@@ -20,7 +20,7 @@ router.post('/UserRegister', (req, res) => {
         if(err){res.status(400);}
         else {
             try{
-                fs.mkdirSync(jsonPath);
+                fs.mkdir(jsonPath);
                 console.log("record inserted");
                 res.status(200);
             }catch(err){

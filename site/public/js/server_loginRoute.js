@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const db = require('./server_mysql');
 
 router.post('/UserLogin', (req, res) => {
     if(!req.body.account || req.body.account.length === 0){
