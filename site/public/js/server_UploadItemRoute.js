@@ -2,6 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
+let multer = require('multer');
+let upload = multer();
 
 router.get('/Categories', (req, res) => {
 
@@ -15,5 +17,11 @@ router.get('/Categories', (req, res) => {
         }
     });
 });
+
+router.post('/UploadItem', upload.array(), (req, res) => {
+    //TODO: save file into local disk
+    console.log(req.body.ItemInfo);
+    console.log(req.body.username);
+})
 
 module.exports = router;

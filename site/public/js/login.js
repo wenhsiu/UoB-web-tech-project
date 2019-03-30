@@ -15,6 +15,8 @@ class LoginForm extends React.Component{
         e.preventDefault()					
         axios.post('/UserLogin', this.state)
         .then(function(response){
+            //check if user login success
+            //store username in cookie
             console.log(response);
         })
         .catch(function(error){

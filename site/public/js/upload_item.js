@@ -34,7 +34,6 @@ class Category extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	};
 
-
 	handleClick(){
 		axios.get("/Categories").then((res) => {
 			if(res.data.length === 0){return;}
