@@ -66,7 +66,7 @@ class UploadItem extends React.Component {
         event.preventDefault();        
         let data = new FormData();
 
-        data.append("ItemInfo", this.state.details);
+        data.append("ItemInfo", JSON.stringify(this.state.details));
         data.append("username", "ab123");
 
         for(var d of data){

@@ -20,7 +20,8 @@ router.get('/Categories', (req, res) => {
 
 router.post('/UploadItem', upload.array(), (req, res) => {
     //TODO: save file into local disk
-    console.log(JSON.stringify(req.body));
+    console.log(req.body.ItemInfo);
+    console.log(req.body.username);
 })
 
 module.exports = router;
