@@ -5,7 +5,7 @@ class EntranceURL extends React.Component{
     }
 
     navigateToItems() {
-        window.location.href="???";
+        window.location.href="mainpage.html";
     }
     render(){
         return(							
