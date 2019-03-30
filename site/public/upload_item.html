@@ -15,7 +15,7 @@
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 		<script src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" data-auto-replace-svg="nest"></script>
-		<script type="text/babel" src="js/upload_item.js"></script>
+		<script type="text/babel" src="js/upload_item_2.js"></script>
 
 
 		<title>Upload Your Items</title>
@@ -27,34 +27,7 @@
 				<h1 class="title">Upload the Item You want to Share!</h1>
 			</header>
 
-			<div id="item_container">
-
-				<div id="image">
-					<!-- <input type="file" id="file" class="uploadfile"/> -->
-				</div>
-
-				<div class="item">
-					<form>
-						<input class="item_name" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="item name">
-					</form>
-					<form>
-						<input class="item_value" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="Exchange items/ value, ex: a cup of coffee">
-					</form>
-					<form>
-						<input class="item_location" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxlength="45" placeholder="item location">
-					</form>
-					<form id="select_cate">
-					</form>
-					<form>
-						<textarea class="item_description" maxlength="200" placeholder="description"></textarea>
-					</form>	
-				</div>
-			</div>
-
-			<div>
-				<input class="button post" type="button" value="Post" />
-			</div>
-			
+			<div id="item_container"></div>
 		</div>
 	</body>
 </html>
