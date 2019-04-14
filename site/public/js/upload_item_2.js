@@ -43,7 +43,7 @@ class UploadItem extends React.Component {
     }
 
     postUsername(){
-        return axios.post("/UploadItem/Username", {foo: 'gh012'});
+        return axios.post("/UploadItem/Username", {foo: 'newAccount1'});
     }
     postImage(){
         let Img = new FormData();

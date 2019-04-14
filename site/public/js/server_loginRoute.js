@@ -7,11 +7,11 @@ router.post('/UserLogin', (req, res) => {
         return;
     }
 
-    let item = req.body;   
-    var dbCmd = "SELECT * FROM members WHERE Username = " + '\'' + item.account + '\'';
+    let item = req.body;
+    let dbCmd = "SELECT * FROM members WHERE Username = ? ";
 
     const connection = req.app.locals.connection;
-    connection.query(dbCmd, (err, rows, fields) => {
+    connection.query(dbCmd, [item.account], (err, rows, fields) => {
         if(err){res.status(400).send('');}
         else if(rows.length === 0){res.status(400).send('');}
         else if(rows[0].Password !== item.password){
