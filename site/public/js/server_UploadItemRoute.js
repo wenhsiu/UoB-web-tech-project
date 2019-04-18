@@ -11,6 +11,7 @@ let path = require('path');
 
 let imgName;
 let currDate;
+let uploadDate;
 let uploadTime;
 
 let storage = multer.diskStorage({
@@ -19,8 +20,9 @@ let storage = multer.diskStorage({
       },
       filename: function (req, file, cb) {
         currDate = new Date();
-        uploadTime = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
-        imgName = username + '_' + uploadTime + ".jpg";
+        uploadDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate(); 
+        uploadTime = currDate.getHours() + "-" + currDate.getMinutes() + "-" + currDate.getSeconds();
+        imgName = username + '_' + uploadDate + "_" + uploadTime + ".jpg";
         cb(null, imgName);
       }
 });
@@ -80,7 +82,7 @@ router.post('/UploadItem/Details', upload.array('detail'), (req, res, next) => {
                              req.body["description"],
                              username,
                              req.body["exchangeItem"],
-                             uploadTime,
+                             uploadDate,
                              imgName,
                              rows[0].id,
                              req.body["location"],
