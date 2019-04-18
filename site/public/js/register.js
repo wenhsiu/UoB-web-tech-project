@@ -17,6 +17,13 @@ class Register extends React.Component{
         axios.post('/UserRegister', this.state)
         .then(function(response){
             console.log(response);
+            
+            if(response.status === 200) {//add username into cookie
+                let d = new Date();
+                d.setTime(d.getTime() + (24*60*60*1000));
+                let expire = "expires=" + d.toUTCString();
+                document.cookie = "username=" + response.data + ";" + expire + "path=/;";
+            }
         })
         .catch(function(error){
             console.log(error);

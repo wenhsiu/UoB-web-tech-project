@@ -16,9 +16,9 @@ router.post('/UserLogin', (req, res) => {
         else if(rows.length === 0){res.status(400).send('');}
         else if(rows[0].Password !== item.password){
             console.log(rows[0].PasswordHint);
-            res.send(rows[0].PasswordHint);
+            res.status(401).send(rows[0].PasswordHint);
         }
-        else {res.status(200).send('');}
+        else {res.status(200).send(rows[0].Username);}
     });
 });
 

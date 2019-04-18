@@ -14,7 +14,7 @@ router.post('/UserRegister', (req, res) => {
         if(err){res.status(400).send();}
         else {
             console.log("record inserted");
-            res.status(200).send();
+            res.status(200).send(item.account);
             }            
         }
     );
