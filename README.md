@@ -2,11 +2,12 @@
 
 This is a website for second-hand groceries exchange. The website pages include home, items, login & register, and upload item.
 Users will be directed to home page for login or sign up before browsing the available items.
+After logging in, users can browse items or post their own items to exchange something else or simply give it away.
 
 # Each Parts
 
 ## HTML
-Most of our pages have already done and have their own HTML files. However, for the item page (display different category) and cart page, in order not to duplicate the same header in each HTML file, we plan to use React single page to build those pages. This will use Js to request data from the database and inserting into the HTML file.
+Most of html files have been completed. For some specific pages such as the item page (display different category) and cart page, we are trying to implement React single page framework so as to reuse the template, and Javascript code will be required to request item details from server side.
 
 ## CSS
 We use Bootstrap in some of our pages. It helps us to organize the grids much easier.
