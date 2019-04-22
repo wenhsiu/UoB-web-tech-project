@@ -1,5 +1,5 @@
 # Introduction
-
+@authors: ny18270, ip18256
 This is a website for second-hand groceries exchange. The website pages include home, items, login & register, and upload item.
 Users will be directed to home page for login or sign up before browsing the available items.
 After logging in, users can browse items or post their own items to exchange something else or simply give it away.
