@@ -12,23 +12,27 @@ class LoginForm extends React.Component{
     }
 
     handleClick = (e) => {
-        e.preventDefault()					
-        axios.post('/UserLogin', this.state)
-        .then(function(response){
-            //check if user login success
-            //store username in cookie
-            console.log(response);
-        })
-        .catch(function(error){
+        e.preventDefault();        
+        axios.post('/UserLogin', this.state).then(function(response){            
+            console.log(response);            
+            if(response.status === 200) {//add username into cookie
+                let d = new Date();
+                d.setTime(d.getTime() + (24*60*60*1000));
+                let expire = "expires=" + d.toUTCString();
+                document.cookie = "username=" + response.data + ";" + expire + "path=/;";
+            }
+            //TODO: display the password hint somewhere on the web page.            
+        }).catch(function(error){           
             console.log(error);
-        });
+        });             
     }
     handleACChange = (e) => {
         this.setState({account: e.target.value})						
     }
     handlePWChange = (e) => {
         this.setState({password: e.target.value})				
-    }
+    } 
+
     render(){
         return(							
             <div className="box">

@@ -5,6 +5,7 @@ class UploadItem extends React.Component {
         this.state = {
             cates: [],
             details: {
+                img: null,
                 file: null,
                 cate: null,
                 name: "",
@@ -14,10 +15,14 @@ class UploadItem extends React.Component {
             }
         };
         this.setSelectOption = this.setSelectOption.bind(this);
+        this.postUsername = this.postUsername.bind(this);
+        this.postImage = this.postImage.bind(this);
+        this.postDetails = this.postDetails.bind(this);
         this.onChangeUploadItemImage = this.onChangeUploadItemImage.bind(this);
         this.onClickCategories = this.onClickCategories.bind(this);
         this.onChangeUploadItemDetails = this.onChangeUploadItemDetails.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.getCookie = this.getCookie.bind(this);
     }
 
     setSelectOption(){
@@ -30,11 +35,50 @@ class UploadItem extends React.Component {
     onChangeUploadItemImage(){
         var image = URL.createObjectURL(event.target.files[0]);
         var detail = this.state.details;
+        detail.img = event.target.files[0];
         detail.file = image;
         
         this.setState({            
 		    detials: detail
         });
+    }
+
+    postUsername(){
+        let user = this.getCookie("username");
+        return axios.post("/UploadItem/Username", {foo: user});
+    }
+
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+    postImage(){
+        let Img = new FormData();
+        Img.append("file", this.state.details.img);
+        return axios.post("/UploadItem/Image", Img, "userpic.jpg");
+    }
+    postDetails(){
+        var detail = new FormData();
+
+        detail.append("name", this.state.details.name);
+        detail.append("cate", this.state.details.cate);
+        detail.append("exchangeItem", this.state.details.exchangingItem);
+        detail.append("location", this.state.details.location);
+        detail.append("description", this.state.details.description);
+
+        return axios.post("/UploadItem/Details", detail);
     }
 
     onChangeUploadItemDetails(){
@@ -59,27 +103,27 @@ class UploadItem extends React.Component {
 			this.setState({
 				cates: res.data
 			});			
-		});	
+        });
+        
+        var cate = document.getElementById("select").value;
+        var detail = this.state.details;
+        detail.cate = cate;
+        this.setState({details: detail});
     }
 
     onSubmit(event){
         event.preventDefault();        
         let data = new FormData();
 
-        data.append("ItemInfo", JSON.stringify(this.state.details));
-        data.append("username", "ab123");
-
+        axios.all([this.postUsername(), this.postImage(), this.postDetails()]).then(function(res){
+            console.log(res);
+        });
+        
         for(var d of data){
             console.log(d);
         }
 
-        axios.post("/UploadItem", data)
-        .then(function(res){
-            console.log(res);
-        })
-        .catch(function(err){
-            console.log(err);
-        })
+        
     }
 
     render(){
