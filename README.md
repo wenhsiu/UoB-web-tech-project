@@ -2,34 +2,29 @@
 
 This is a website for second-hand groceries exchange. The website pages include home, items, login & register, and upload item.
 Users will be directed to home page for login or sign up before browsing the available items.
+
 # Each Parts
 
 ## HTML
-
-Most of our pages have their own html files. However, for the item page (display different category) and cart page, in order not to duplicate the same header in each HTML file, we plan to use react single page to build those pages.
-
-- Already Done
-1. Entrance page: The first page for our website. User could choose to login or just browser the items.
-2. Login & Register pages: 
-
-- Not Yet
-1. React single page: use the same HTML format to display items in different categories.
-2. Link the data in database and display on the HTML pages
-
+Most of our pages have already done and have their own HTML files. However, for the item page (display different category) and cart page, in order not to duplicate the same header in each HTML file, we plan to use React single page to build those pages. This will use Js to request data from the database and inserting into the HTML file.
 
 ## CSS
+We use Bootstrap in some of our pages. It helps us to organize the grids much easier.
+
+TODO:
+1. Most of the pages didn't has a responsive design. We might add it in after we match all the requirments.
 
 ## JS
+We use React.JS framework to organize our js interaction. These interactions include button clicks, upload data into database, and insert and display the data from the database to the client page.
 
-We use React framework to organize our js interaction.
+TODO:
+1. create a React single page and use React.Js to insert the data into the HTML file in order to display items from different categories.
 
 ## PNG
-
 Most of the images are stored in png, including the icons and logo.
 
 ## SVG
-
-Haven't done any yet.
+We haven't done any SVG file yet.
 
 ## Server
 All the server related code are developed in node.js. This server is able to respond to different get/post requests from the client side and adopts "express" module to organize different routes.
@@ -47,7 +42,7 @@ TODO:
 ## Database
 This project uses mysql to store/access data in database. The current database contains all the tables required in this project is named "projectdb". The login information is hardcoded in server_mysql.js.
 
-## Dynamic pages</li>
+## Dynamic pages
 TODO: 
 1. Adding the features on browse page to requests different items information from the server and displays accordingly.
 
