@@ -7,7 +7,10 @@ class Header extends React.Component {
 		};
 
 		this.setCategories = this.setCategories.bind(this);
-		this.addLogo = this.addLogo.bind(this);
+		this.displayLogo = this.displayLogo.bind(this);
+		this.displayCategories = this.displayCategories.bind(this);
+
+		this.setCategories();
 	}
 
 	setCategories() {
@@ -17,7 +20,9 @@ class Header extends React.Component {
 				cates: res.data
 			});		
         });
+    }
 
+    displayCategories() {
     	return(
 			this.state.cates.map((element) => {
 				return <li key = {element.id.toString()}> {element.name} </li>
@@ -25,7 +30,7 @@ class Header extends React.Component {
 		)
     }
 
-    addLogo() {
+    displayLogo() {
     	return(
     		<svg className="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 676.33 261.53">
 				<defs>
@@ -98,7 +103,7 @@ class Header extends React.Component {
 			<header>
 				<div className="title row align-items-center">
 					<div className="logo col-3 text-hide">
-						{this.addLogo()}
+						{this.displayLogo()}
 						<a href="homeItem.html" className="logo">Sharing within Bristol</a>
 						}
 					</div>
@@ -122,7 +127,7 @@ class Header extends React.Component {
 					<div id="category">
 						<ul> 
 							<li> Home </li>
-							{this.setCategories()}
+							{this.displayCategories()}
 						</ul>
 					</div>
 				</nav>

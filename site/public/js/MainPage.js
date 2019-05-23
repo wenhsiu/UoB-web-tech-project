@@ -4,11 +4,15 @@ class MainPage extends React.Component {
 		super(props);
 		this.state = {
 			latestItems:[],
-			path: null
+			path: null,
+			url: null,
+			itemId: []
 		};
 
 		this.setNewItems = this.setNewItems.bind(this);
 		this.displayItems = this.displayItems.bind(this);
+
+		this.setNewItems();
 	}
 
     setNewItems() {
@@ -20,6 +24,14 @@ class MainPage extends React.Component {
 			
 		});
 	}
+
+	// getItemsId() {
+	// 	this.state.latestItems.map((element) => {
+
+	// 	})
+	// }
+
+
 
 	displayItems() {
 		return(
@@ -36,16 +48,20 @@ class MainPage extends React.Component {
 					})
 				});
 
+				// this.setState({url: 'item/:' + element.Id});
+
+
 				return(
 					<div className="card" key = {element.Id.toString()}>
 						<img src={this.state.path} className="card-img-top" alt={element.ItemName}/>
-						<div className="card-body"> {element.ItemName} </div>
+						<div className="card-body"> 
+							<a href={this.state.url} className="stretched-link">{element.ItemName}</a>
+						</div>
 					</div>
 				)
 			})
 		)
 	}
-
 
 	render() {
 		return (
@@ -56,7 +72,6 @@ class MainPage extends React.Component {
 				<div id="item_display">
 					<h2>What's New</h2>
 					<div className="scrolling_box">
-					{this.setNewItems()}
 					{this.displayItems()}
 {/*						<div className="card">
 							<img src="http://lorempixel.com/output/cats-q-c-182-182-4.jpg" className="card-img-top" alt="item name" />
