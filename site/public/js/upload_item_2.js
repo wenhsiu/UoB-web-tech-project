@@ -62,7 +62,7 @@ class UploadItem extends React.Component {
           }
         }
         return "";
-      }
+    }
 
     postImage(){
         let Img = new FormData();
