@@ -24,8 +24,12 @@ class MainPage extends React.Component {
 	displayItems() {
 		return(
 			this.state.latestItems.map((element) => {
-
-				axios.get("/getImage", element.Details).then((res) => {
+				
+				axios.get("/getImage", {
+					params: {
+						imgName: element.Details
+					}
+					}).then((res) => {
 					if(res.data.length === 0){return;}
 					this.setState({
 						path: res.data
