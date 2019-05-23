@@ -7,7 +7,8 @@ var app = express();
 app.use(require('body-parser').json());
 app.use(require('./public/js/server_loginRoute'));
 app.use(require('./public/js/server_registerRoute'));
-app.use(require('./public/js/server_UploadItemRoute'))
+app.use(require('./public/js/server_UploadItemRoute'));
+app.use(require('./public/js/server_cateItemRoute'));
 
 db.connect();
 var connection = db.get();
