@@ -51,8 +51,9 @@ router.get('/getOneItemById', (req, res) => {
     })
 })
 
-router.get('/getImage', (req, res) => {
-    res.sendFile(picPath + '/' + req.body.imgName);
+router.get('/getImage', (req, res) => { 
+    console.log(req.query);   
+    res.sendFile(picPath + '/' + req.query.imgName);
 })
 
 
