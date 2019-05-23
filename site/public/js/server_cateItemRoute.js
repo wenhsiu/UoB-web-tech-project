@@ -5,7 +5,6 @@ const router = express.Router();
 
 let fs = require('fs');
 
-let multer = require('multer');
 let path = require('path');
 
 const picPath = path.join(__dirname, '..', 'uploadpics');
@@ -22,6 +21,10 @@ router.get('/getItemsByCate', (req, res) => {
             res.send(rows);
         }
     })
+})
+
+router.get('/getImage', (req, res) => {
+    res.sendFile(picPath + '/' + req.body.imgName);
 })
 
 
