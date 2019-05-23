@@ -44,7 +44,7 @@ class Header extends React.Component {
 					.cls-5,.cls-6{fill:#e27579}
 					.cls-6{stroke-linecap:round}
 					.cls-9{font-size:90px}
-					.cls-10,.cls-9{font-family:AvenirNext-Regular, Avenir Next}
+					.cls-10,.cls-9{font-family:AvenirNext-Regular, Avenir Next, Open Sans, sans-serif}
 					.cls-10{font-size:60px}`}
 				</style>
 				</defs>
