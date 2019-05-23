@@ -6,11 +6,11 @@ class Header extends React.Component {
 			cates: [],
 		};
 
-		this.setSelectOption = this.setSelectOption.bind(this);
+		this.setCategories = this.setCategories.bind(this);
 		this.addLogo = this.addLogo.bind(this);
 	}
 
-	setSelectOption() {
+	setCategories() {
 		axios.get("/Categories").then((res) => {
 			if(res.data.length === 0){return;}
 			this.setState({
@@ -18,7 +18,7 @@ class Header extends React.Component {
 			});		
         });
 
-		return(
+    	return(
 			this.state.cates.map((element) => {
 				return <li key = {element.id.toString()}> {element.name} </li>
 			})
@@ -122,7 +122,7 @@ class Header extends React.Component {
 					<div id="category">
 						<ul> 
 							<li> Home </li>
-							{this.setSelectOption()}
+							{this.setCategories()}
 						</ul>
 					</div>
 				</nav>
