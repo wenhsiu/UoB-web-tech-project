@@ -23,6 +23,9 @@ class UploadItem extends React.Component {
         this.onChangeUploadItemDetails = this.onChangeUploadItemDetails.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.getCookie = this.getCookie.bind(this);
+
+
+        this.onClickCategories();
     }
 
     setSelectOption(){
@@ -105,10 +108,10 @@ class UploadItem extends React.Component {
 			});			
         });
         
-        var cate = document.getElementById("select").value;
-        var detail = this.state.details;
-        detail.cate = cate;
-        this.setState({details: detail});
+        // var cate = document.getElementById("select").value;
+        // var detail = this.state.details;
+        // detail.cate = cate;
+        // this.setState({details: detail});
     }
 
     onSubmit(event){
@@ -128,12 +131,12 @@ class UploadItem extends React.Component {
 
     render(){
         return (
-            <div>
-                <div id="image">
+            <div className="row container-fluid">
+                <div id="image" className="col-6">
                     <input type="file" onChange={this.onChangeUploadItemImage}/>
                     <img src={this.state.details.file}/>			
 				</div>
-				<div className="item">
+				<div className="item col-6">
 					<form>
 						<input id="name" className="item_name" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item name" onChange={this.onChangeUploadItemDetails} />
 					</form>
@@ -147,7 +150,7 @@ class UploadItem extends React.Component {
 					</form>
 
 					<form id="select_cate">
-                        <select id="select" className="item_category" onClick={this.onClickCategories}>										
+                        <select id="select" className="item_category">										
                             <option>Select a category</option>
                             {this.setSelectOption()};				
                         </select>

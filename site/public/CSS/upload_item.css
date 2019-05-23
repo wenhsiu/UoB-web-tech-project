@@ -34,7 +34,7 @@ header {
 #image {
 	border-radius: 10px;
 	border: 1px solid #cccccc;
-	margin: 10px 20px;
+	margin: 10px;
 	background: #ffffff;
 	padding: 10px;
 	width: 50%;
@@ -46,7 +46,7 @@ img {
 
 .item {
 	width: 50%;
-	margin: 10px 20px;
+	margin: 10px;
 }
 
 .item_name, .item_value, .item_location, .item_description, .item_category {
@@ -98,3 +98,6 @@ img {
 	margin-left: 560px;
 }
 
+.row {
+	flex-wrap: nowrap;
+}
