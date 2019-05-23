@@ -1,36 +1,15 @@
-// import {Route, NavLink, HashRouter} from "react-router-dom";
-const {Route, NavLink, HashRouter} = 'react-router-dom';
-const {Header} = './Header';
-// import Header from "./Header";
-// import Stuff from "./Stuff";
-// import Contact from "./Contact";
 
 class MainPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			cates: [],
+			,
 		};
 
 		this.setSelectOption = this.setSelectOption.bind(this);
 	}
 
-	setSelectOption() {
-		axios.get("/Categories").then((res) => {
-			if(res.data.length === 0){return;}
-			this.setState({
-				cates: res.data
-			});		
-        });
-
-		return(
-			this.state.cates.map((element) => {
-				return <li key = {element.id.toString()}> {element.name} </li>
-			})
-		)
-    }
-
-    setItems() {
+    setNewItems() {
     	axios.get("/Categories").then((res) => {
 			if(res.data.length === 0){return;}
 			this.setState({
@@ -39,15 +18,10 @@ class MainPage extends React.Component {
         });
     }
 
-	navigateToLogin() {
-        window.location.href="login.html";
-    }
-
 
 	render() {
 		return (
 			<div>
-				
 				<div className="banner">
 					<img className="banner_img" src="../img/banner.png" />
 				</div>
