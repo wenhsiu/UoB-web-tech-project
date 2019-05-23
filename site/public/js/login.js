@@ -7,7 +7,7 @@ class LoginForm extends React.Component{
 
     handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault()
+            e.preventDefault();
         }
     }
 

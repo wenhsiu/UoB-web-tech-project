@@ -1,15 +1,21 @@
+// import {Route, NavLink, HashRouter} from "react-router-dom";
+const {Route, NavLink, HashRouter} = 'react-router-dom';
+const {Header} = './Header';
+// import Header from "./Header";
+// import Stuff from "./Stuff";
+// import Contact from "./Contact";
 
 class MainPage extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
-			cates: []
+			cates: [],
 		};
 
 		this.setSelectOption = this.setSelectOption.bind(this);
 	}
 
-	setSelectOption(){
+	setSelectOption() {
 		axios.get("/Categories").then((res) => {
 			if(res.data.length === 0){return;}
 			this.setState({
@@ -24,61 +30,41 @@ class MainPage extends React.Component {
 		)
     }
 
+    setItems() {
+    	axios.get("/Categories").then((res) => {
+			if(res.data.length === 0){return;}
+			this.setState({
+				cates: res.data
+			});		
+        });
+    }
 
 	navigateToLogin() {
         window.location.href="login.html";
     }
 
+
 	render() {
 		return (
 			<div>
-				<header>
-					<div className="title row align-items-center">
-						<div className="logo col-3 text-hide">
-							<a href="homeItem.html" className="logo">Sharing within Bristol</a>
-						</div>
-						<div className="search col-6">
-							<form>
-								<input className="search_area" type="text" placeholder="What are you looking for?" />
-								<button className="search_button" type="submit" value="search">
-									<i className="fas fa-search"></i>
-								</button>
-							</form>
-						</div>
-						<div className="login col-3">
-							<input className = "login_link" type="button" value="Login/Register" onClick={this.navigateToLogin} />
-							<a href="購物車頁面！">
-								<i className="fas fa-shopping-cart"></i>
-							</a>
-						</div>
-					</div>
-
-					<nav>
-						<div id="category">
-							<ul> 
-								<li> Home </li>
-								{this.setSelectOption()}
-							</ul>
-						</div>
-					</nav>
-				</header>
+				
 				<div className="banner">
-					<img class="banner_img" src="../img/banner.png" />
+					<img className="banner_img" src="../img/banner.png" />
 				</div>
 				<div id="item_display">
 					<h2>What's New</h2>
-					<div class="scrolling_box">
-						<div class="card">
-							<img src="http://lorempixel.com/output/cats-q-c-182-182-4.jpg" class="card-img-top" alt="item name" />
-							<div class="card-body">
-								<a href="#" class="stretched-link">item name</a>
+					<div className="scrolling_box">
+						<div className="card">
+							<img src="http://lorempixel.com/output/cats-q-c-182-182-4.jpg" className="card-img-top" alt="item name" />
+							<div className="card-body">
+								<a href="#" className="stretched-link">item name</a>
 							</div>
 						</div>
 
-						<div class="card">
-							<img src="http://lorempixel.com/output/cats-q-c-182-182-1.jpg" class="card-img-top" alt="item name" />
-							<div class="card-body">
-								<a href="#" class="stretched-link">item name</a>
+						<div className="card">
+							<img src="http://lorempixel.com/output/cats-q-c-182-182-1.jpg" className="card-img-top" alt="item name" />
+							<div className="card-body">
+								<a href="#" className="stretched-link">item name</a>
 							</div>
 						</div>
 					</div>
@@ -89,4 +75,4 @@ class MainPage extends React.Component {
 	}
 }
 
-ReactDOM.render(<MainPage />, document.getElementById('container'));
+ReactDOM.render(<MainPage />, document.getElementById('content'));
