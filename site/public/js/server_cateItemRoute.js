@@ -10,14 +10,13 @@ let path = require('path');
 const picPath = path.join(__dirname, '..', 'uploadpics');
 
 router.get('/getLatestItems', (req, res) => {
-    
     let cmd = "SELECT ItemName, Details, Id FROM items ORDER BY Id DESC LIMIT " + limit + " ;";
 
     const connection = res.app.locals.connection;
     connection.query(cmd, (err, rows) => {
         if(err){
             res.status(400).send().end();
-        }else{
+        }else{            
             res.send(rows);
         }
     })
@@ -51,9 +50,11 @@ router.get('/getOneItemById', (req, res) => {
     })
 })
 
-router.get('/getImage', (req, res) => { 
-    console.log(req.query);   
-    res.sendFile(picPath + '/' + req.query.imgName);
+
+router.get('/getImage/*', (req, res) => {
+    console.log(req.url);
+    
+    res.sendFile(picPath + "/" + req.url.split("/getImage/")[1]);
 })
 
 
