@@ -11,6 +11,7 @@ class Header extends React.Component {
 		this.displayCategories = this.displayCategories.bind(this);
 		this.navigateToLogin = this.navigateToLogin.bind(this);
 		this.uploadItem = this.uploadItem.bind(this);
+		this.getCookie = this.getCookie.bind(this);
 
 		this.setCategories();
 	}
@@ -20,10 +21,11 @@ class Header extends React.Component {
     }
 
     uploadItem() {
-    	if(this.getCookie("username") != null) {
+    	if(this.getCookie("username")) {
     		window.location.href="upload_item.html";
+    	} else {
+    		window.location.href="login.html";
     	}
-    	window.location.href="login.html";
     }
 
     getCookie(cname) {
@@ -36,10 +38,10 @@ class Header extends React.Component {
             c = c.substring(1);
           }
           if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+            return true;
           }
         }
-        return "";
+        return false;
     }
 
 	setCategories() {
