@@ -24,7 +24,9 @@ class LoginForm extends React.Component{
             //TODO: display the password hint somewhere on the web page.            
         }).catch(function(error){           
             console.log(error);
-        });             
+        });
+
+        window.location.href="mainpage.html";           
     }
     handleACChange = (e) => {
         this.setState({account: e.target.value})						

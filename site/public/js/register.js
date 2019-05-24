@@ -28,6 +28,8 @@ class Register extends React.Component{
         .catch(function(error){
             console.log(error);
         });
+
+        window.location.href="mainpage.html";
     }
     handleACChange = (e) => {
         this.setState({account: e.target.value})						
