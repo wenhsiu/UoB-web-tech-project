@@ -42,8 +42,8 @@ router.get('/public/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', req.originalUrl));    
 })
 
-router.get('/getItemsByCate/*', (req, res) => {
-    let cateID = req.param.cate;
+router.get('/getItemsByCate/:id', (req, res) => {
+    let cateID = req.param.id;
     let cmd = "SELECT ItemName, Details, Id FROM items WHERE Category = ? ;";
 
     const connection = res.app.locals.connection;
@@ -56,8 +56,8 @@ router.get('/getItemsByCate/*', (req, res) => {
     })
 })
 
-router.get('/getOneItemById/*', (req, res) => {
-    let ID = req.params.ID;
+router.get('/getOneItemById/:id', (req, res) => {
+    let ID = req.params.id;
     let cmd = "SELECT * FROM items WHERE Id = ? ;";
 
     const connection = res.app.locals.connection;
