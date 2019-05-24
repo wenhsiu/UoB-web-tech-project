@@ -22,8 +22,28 @@ router.get('/getLatestItems', (req, res) => {
     })
 })
 
-router.get('/getItemsByCate', (req, res) => {
-    let cateID = req.body.cateID;
+router.get('/public/:id', (req, res) => {     
+    let cmd = "SELECT COUNT(*) AS NUM FROM items WHERE Id = ? ;";
+    const connection = res.app.locals.connection;
+    connection.query(cmd, req.params.id, (err, rows) => {
+        if(err){
+            console.log(err);
+            res.status(400).send();
+        }else if(rows[0].NUM === 0){            
+            res.status(502).send();
+        }else{            
+            res.sendFile(path.join(__dirname, '..', 'item.html'));
+            
+        }
+    })
+})
+
+router.get('/public/*', (req, res) => {    
+    res.sendFile(path.join(__dirname, '..', '..', req.originalUrl));    
+})
+
+router.get('/getItemsByCate/*', (req, res) => {
+    let cateID = req.param.cate;
     let cmd = "SELECT ItemName, Details, Id FROM items WHERE Category = ? ;";
 
     const connection = res.app.locals.connection;
@@ -36,8 +56,8 @@ router.get('/getItemsByCate', (req, res) => {
     })
 })
 
-router.get('/getOneItemById', (req, res) => {
-    let ID = req.body.ID;
+router.get('/getOneItemById/*', (req, res) => {
+    let ID = req.params.ID;
     let cmd = "SELECT * FROM items WHERE Id = ? ;";
 
     const connection = res.app.locals.connection;
@@ -51,9 +71,7 @@ router.get('/getOneItemById', (req, res) => {
 })
 
 
-router.get('/getImage/*', (req, res) => {
-    console.log(req.url);
-    
+router.get('/getImage/*', (req, res) => {        
     res.sendFile(picPath + "/" + req.url.split("/getImage/")[1]);
 })
 
