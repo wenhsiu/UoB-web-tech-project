@@ -3,7 +3,7 @@
 }
 
 .banner_img {
-	/*目前是 700px*/
+	width: 700px
 }
 
 #item_display {
@@ -21,4 +21,9 @@ h2 {
 
 .card-title {
 	font-size: 14px;
+}
+
+.card-img-top {
+	width: 182px;
+	height: 182px;
 }

@@ -21,3 +21,8 @@ h3 {
 .card-title {
 	font-size: 14px;
 }
+
+.card-img-top {
+	width: 182px;
+	height: 182px;
+}

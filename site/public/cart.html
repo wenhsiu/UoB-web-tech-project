@@ -6,74 +6,25 @@
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		
-		<link rel="stylesheet" type="text/css" href="css/itempages_general.css" />
+		<link rel="stylesheet" type="text/css" href="css/header.css" />
 		<link rel="stylesheet" type="text/css" href="css/cart.css" />
 
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Open+Sans" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<script type="text/babel" src="js/Header.js"></script>
+		<!-- <script type="text/babel" src="js/MainPage.js"></script> -->
 
 		<title>Sharing within Bristol</title>
 	</head>
 
 	<body>
 		<div id="container" class="container-fluid">
-			<header>
-				<div class="title row align-items-center">
-					<div class="logo col-3 text-hide">
-						<a href="homeItem.html" class="logo">Sharing within Bristol</a>
-					</div>
-				<!-- 	<div class="col-1 logo">
-						<img src="img/logo.png" width="128">
-					</div> -->
-					<div class="search col-6">
-						<form>
-							<input class="search_area" type="text" placeholder="What are you looking for?">
-							<!-- <input type="submit" name="" value="search"> -->
-							<button class="search_button" type="submit" value="search">
-								<i class="fas fa-search"></i>
-							</button>
-						</form>
-					</div>
-					<div class="login col-3">
-						<input class = "login_link" type="button" value="Login/Register" onclick=window.location.href="login.html">
-						<!-- <a class="login_link" href="login.html">
-							<span>Login/Register</span>
-						</a> -->
-						<a href="購物車頁面！">
-							<i class="fas fa-shopping-cart"></i>
-						</a>
-					</div>
-				</div>
-
-				<nav>
-					<div id="category">
-						<ul>
-							<li>
-								<a href="">Promotions</a>
-							</li>
-							<li>
-								<a href="">Kitchen</a>
-							</li>
-							<li>
-								<a href="">Stationery</a>
-							</li>
-							<li>
-								<a href="">Home & Living</a>
-							</li>
-							<li>
-								<a href="">Accesories</a>
-							</li>
-							<li>
-								<a href="">Clothing</a>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</header>
+			<div id ="header"></div>
 
 			<div id="item_diplay">
 				<h3>how mant items are in this cart</h3>

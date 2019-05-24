@@ -12,6 +12,8 @@ class Header extends React.Component {
 		this.navigateToLogin = this.navigateToLogin.bind(this);
 		this.uploadItem = this.uploadItem.bind(this);
 		this.getCookie = this.getCookie.bind(this);
+		this.deleteCookie = this.deleteCookie.bind(this);
+		this.setLoginOutButton = this.setLoginOutButton.bind(this);
 
 		this.setCategories();
 	}
@@ -21,10 +23,24 @@ class Header extends React.Component {
     }
 
     uploadItem() {
-    	if(this.getCookie("username")) {
+    	if(this.getCookie("username") != "") {
     		window.location.href="upload_item.html";
     	} else {
     		window.location.href="login.html";
+    	}
+    }
+
+    deleteCookie() {
+    	let expire = "Thu, 01 Jan 1970 00:00:00 UTC";
+    	document.cookie = "username=; " + expire + "path=/;";
+    	window.location.reload();
+    }
+
+    setLoginOutButton() {
+    	if(this.getCookie("username") != "") {
+    		return <input className = "login_link" type="button" value="Logout" onClick={this.deleteCookie} />
+    	} else {
+    		return <input className = "login_link" type="button" value="Login/Register" onClick={this.navigateToLogin} />
     	}
     }
 
@@ -38,11 +54,11 @@ class Header extends React.Component {
             c = c.substring(1);
           }
           if (c.indexOf(name) == 0) {
-            return true;
+            return c.substring(name.length, c.length);
           }
         }
-        return false;
-    }
+        return "";
+	}
 
 	setCategories() {
 		axios.get("/Categories").then((res) => {
@@ -56,7 +72,7 @@ class Header extends React.Component {
     displayCategories() {
     	return(
 			this.state.cates.map((element) => {
-				return <li key = {element.id.toString()}> {element.name} </li>
+				return <li key = {element.id.toString()}><a href={"mainpage/" + element.id} className="stretched-link"> {element.name} </a></li>
 			})
 		)
     }
@@ -139,10 +155,10 @@ class Header extends React.Component {
 						}
 					</div>
 					<div className="search col-3"></div>
-					<div className="login col-4">
+					<div className="login col-5">
 						<input className = "login_link" type="button" value="Upload Items" onClick={this.uploadItem} />
-						<input className = "login_link" type="button" value="Login/Register" onClick={this.navigateToLogin} />
-						<a href="購物車頁面！">
+						{this.setLoginOutButton()}
+						<a href="cart.html">
 							<i className="fas fa-shopping-cart"></i>
 						</a>
 					</div>
@@ -151,7 +167,7 @@ class Header extends React.Component {
 				<nav>
 					<div id="category">
 						<ul> 
-							<li> Home </li>
+							<li><a href={"mainpage.html"} className="stretched-link"> Home </a></li>
 							{this.displayCategories()}
 						</ul>
 					</div>
@@ -161,4 +177,3 @@ class Header extends React.Component {
 	}
 }
 ReactDOM.render(<Header />, document.getElementById('header'));
-// export default Header;
