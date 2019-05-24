@@ -45,7 +45,7 @@ class Item extends React.Component {
                                     <h3 className="item_value">{element.Exchange}</h3>
                                     <input className = "add_cart" type="button" value="Add to Cart" />
                                 </div>
-                                <h3 className="item_location">item location</h3>
+                                <h3 className="item_location">{element.Location}</h3>
                                 <h3 className="item_owner">{element.OwnerId}</h3>
                                 <h3 className="item_description">{element.Description}</h3>
                             </div>
