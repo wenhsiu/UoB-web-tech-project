@@ -9,9 +9,38 @@ class Header extends React.Component {
 		this.setCategories = this.setCategories.bind(this);
 		this.displayLogo = this.displayLogo.bind(this);
 		this.displayCategories = this.displayCategories.bind(this);
+		this.navigateToLogin = this.navigateToLogin.bind(this);
+		this.uploadItem = this.uploadItem.bind(this);
 
 		this.setCategories();
 	}
+
+	navigateToLogin() {
+        window.location.href="login.html";
+    }
+
+    uploadItem() {
+    	if(this.getCookie("username") != null) {
+    		window.location.href="upload_item.html";
+    	}
+    	window.location.href="login.html";
+    }
+
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
 
 	setCategories() {
 		axios.get("/Categories").then((res) => {
@@ -107,15 +136,9 @@ class Header extends React.Component {
 						<a href="homeItem.html" className="logo">Sharing within Bristol</a>
 						}
 					</div>
-					<div className="search col-6">
-						<form>
-							<input className="search_area" type="text" placeholder="What are you looking for?" />
-							<button className="search_button" type="submit" value="search">
-								<i className="fas fa-search"></i>
-							</button>
-						</form>
-					</div>
-					<div className="login col-3">
+					<div className="search col-3"></div>
+					<div className="login col-4">
+						<input className = "login_link" type="button" value="Upload Items" onClick={this.uploadItem} />
 						<input className = "login_link" type="button" value="Login/Register" onClick={this.navigateToLogin} />
 						<a href="購物車頁面！">
 							<i className="fas fa-shopping-cart"></i>

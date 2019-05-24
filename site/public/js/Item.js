@@ -17,6 +17,15 @@ class Item extends React.Component {
         };
     }
 
+    setItemDetail() {
+        axios.get("/getOneItemById/", {ID: }).then((res) => {
+            if(res.data.length === 0){return;}
+            this.setState({
+                latestItems: res.data
+            })
+        });
+    }
+
 
 
     render() {
