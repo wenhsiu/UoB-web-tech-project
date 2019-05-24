@@ -1,32 +1,20 @@
 
 class MainPage extends React.Component {
-	// state = {
-	// 	latestItems:[],
-	// }
+	state = {
+		latestItems:[],
+		path: null,
+		url: null,
+		itemId: []
+	};
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			latestItems:[],
-			path: [],
-			itemURL: [],
-			itemId: []
-		};
 
 		this.setNewItems = this.setNewItems.bind(this);
 		this.displayItems = this.displayItems.bind(this);
 		this.getItemsId = this.getItemsId.bind(this);
-		this.getImagePath = this.getImagePath.bind(this);
 
 		this.setNewItems();
-		// this.setState({itemId: this.state.latestItems.filter(this.getItemsId)})
-		// console.log(this.state.latestItems);
-		// this.getItemsId();
-		if(this.state.latestItems.length > 0) {
-			console.log(this.state.latestItems);
-			this.getItemsId();
-			// this.getImagePath();
-		}
 	}
 
     setNewItems() {
@@ -50,35 +38,6 @@ class MainPage extends React.Component {
 		}
 	}
 
-	getImagePath() {
-		// this.state.latestItems.map((element) => {
-		// 	axios.get("/getImage", {
-		// 		params: {
-		// 			imgName: element.Details
-		// 		}
-		// 		}).then((res) => {
-		// 		if(res.data.length === 0){return;}
-		// 		this.setState({
-		// 			path: res.data
-		// 		})
-		// 	});
-		// });
-
-		for(let i = 0; i < this.state.latestItems.length; i++) {
-			axios.get("/getImage", {
-				params: {
-					imgName: this.state.latestItems.Details
-				}
-				}).then((res) => {
-				if(res.data.length === 0){return;}
-				this.setState({
-					path: res.data
-				})
-			});
-		}
-	}
-
-
 
 	displayItems() {
 		// if(this.state.latestItems.length > 0) {
@@ -91,22 +50,9 @@ class MainPage extends React.Component {
 
 		return(
 			this.state.latestItems.map((element) => {
-				
-				axios.get("/getImage", {
-					params: {
-						imgName: element.Details
-					}
-					}).then((res) => {
-					if(res.data.length === 0){return;}
-					this.setState({
-						path: res.data
-					})
-				});
-
-
 				return(
 					<div className="card" key = {element.Id.toString()}>
-						<img src={this.state.path} className="card-img-top" alt={element.ItemName}/>
+						<img src={"/getImage/" + element.Details} className="card-img-top" alt={element.ItemName}/>
 						<div className="card-body"> 
 							<a href={this.state.url} className="stretched-link">{element.ItemName}</a>
 						</div>
@@ -125,20 +71,7 @@ class MainPage extends React.Component {
 				<div id="item_display">
 					<h2>What's New</h2>
 					<div className="scrolling_box">
-					{this.displayItems()}
-{/*						<div className="card">
-							<img src="http://lorempixel.com/output/cats-q-c-182-182-4.jpg" className="card-img-top" alt="item name" />
-							<div className="card-body">
-								<a href="#" className="stretched-link">item name</a>
-							</div>
-						</div>
-
-						<div className="card">
-							<img src="http://lorempixel.com/output/cats-q-c-182-182-1.jpg" className="card-img-top" alt="item name" />
-							<div className="card-body">
-								<a href="#" className="stretched-link">item name</a>
-							</div>
-						</div>*/}
+						{this.displayItems()}
 					</div>
 				</div>
 
