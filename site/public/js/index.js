@@ -20,7 +20,7 @@ class EntranceURL extends React.Component{
                         <input className="button" type="button" value="Login / Sign Up" onClick={this.navigateToLogin} />
                     </form>
                     <form>
-                        <input className="button" type="button" value="Browser the Stuff" onClick={this.navigateToItems} />
+                        <input className="button" type="button" value="Browse the Stuff" onClick={this.navigateToItems} />
                     </form> 
                 </div>
             </div>

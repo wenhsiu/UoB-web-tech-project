@@ -39,15 +39,20 @@ class Item extends React.Component {
                             <div className="col-6">
                                 <img className="item_img" src={"/getImage/" + element.Details} alt={element.ItemName} />
                             </div>
-                            <div className="col-6">
+                            <div className="col-6 info">
                                 <div className="simple_info">
-                                    <h3 className="item_name">{element.ItemName}</h3>
-                                    <h3 className="item_value">{element.Exchange}</h3>
+                                    <h4 className="item_name">Item: </h4>
+                                    <p className="name">{element.ItemName}</p>
+                                    <h4 className="item_value">Exchange Value: </h4>
+                                    <p className="value">{element.Exchange}</p>
                                     <input className = "add_cart" type="button" value="Add to Cart" />
                                 </div>
-                                <h3 className="item_location">{element.Location}</h3>
-                                <h3 className="item_owner">{element.OwnerId}</h3>
-                                <h3 className="item_description">{element.Description}</h3>
+                                <h4 className="item_location">Location: </h4>
+                                <p className="location">{element.Location}</p>
+                                <h4 className="item_owner"> Owner: </h4>
+                                <p className="owner">{element.OwnerId}</p>
+                                <h4 className="item_description">Description: </h4>
+                                <p className="description">{element.Description}</p>
                             </div>
                         </div>
                     </div>

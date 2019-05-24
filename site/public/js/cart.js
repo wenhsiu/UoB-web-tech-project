@@ -1,6 +1,5 @@
 class Cart extends React.Component {
 	state = {
-		cate: "",
 		itemsList:[],
 	};
 
@@ -13,23 +12,25 @@ class Cart extends React.Component {
 		this.setItemsList();
 	}
 
-	setCate() {
-		axios.get("/getItemsByCate/:ID").then((res) => {
-			if(res.data.length === 0){return;}
-			this.setState({
-				itemsList: res.data
-			})
-		});
+	setItemsList() {
+		
 	}
 
-    setItemsList() {
-    	axios.get("/getItemsByCate/:ID").then((res) => {
-			if(res.data.length === 0){return;}
-			this.setState({
-				itemsList: res.data
-			})
-		});
-	}
+	getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
 
 	displayItems() {
 		return(
@@ -49,19 +50,13 @@ class Cart extends React.Component {
 	render() {
 		return (
 			<div>
-				<h3>how mant items are in this cart</h3>
+				<h3>Items in the Cart</h3>
 				<div class="items">
-					<div class="card">
-						<img src="http://lorempixel.com/output/cats-q-c-182-182-4.jpg" class="card-img-top" alt="item name" />
-						<div class="card-body">
-							<!-- <h5 class="card-title">item name</h5> -->
-							<a href="#" class="stretched-link">item name</a>
-						</div>
-					</div>
+					{this.displayItems()}
 				</div>
 			</div>
 		)
 	}
 }
 
-ReactDOM.render(<Cart />, document.getElementById('content'));
+ReactDOM.render(<Cart />, document.getElementById('itemsList'));

@@ -72,7 +72,7 @@ class Header extends React.Component {
     displayCategories() {
     	return(
 			this.state.cates.map((element) => {
-				return <li key = {element.id.toString()}><a href={"mainpage/" + element.id} className="stretched-link"> {element.name} </a></li>
+				return <li key = {element.id.toString()}><a href={"browse/" + element.id} className="stretched-link"> {element.name} </a></li>
 			})
 		)
     }
@@ -158,7 +158,7 @@ class Header extends React.Component {
 					<div className="login col-5">
 						<input className = "login_link" type="button" value="Upload Items" onClick={this.uploadItem} />
 						{this.setLoginOutButton()}
-						<a href="cart.html">
+						<a href="/cart.html">
 							<i className="fas fa-shopping-cart"></i>
 						</a>
 					</div>
@@ -167,7 +167,7 @@ class Header extends React.Component {
 				<nav>
 					<div id="category">
 						<ul> 
-							<li><a href={"mainpage.html"} className="stretched-link"> Home </a></li>
+							<li><a href={"/mainpage.html"} className="stretched-link"> Home </a></li>
 							{this.displayCategories()}
 						</ul>
 					</div>

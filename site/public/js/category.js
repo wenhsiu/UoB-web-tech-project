@@ -7,6 +7,13 @@ class ItemsInCategory extends React.Component {
 
 	constructor(props) {
 		super(props);
+		let path = window.location.pathname;
+        let array = path.split("/");
+
+		this.state = {
+			cate: array[2],
+			itemsList:[]
+		};
 
 		this.setItemsList = this.setItemsList.bind(this);
 		this.displayItems = this.displayItems.bind(this);
@@ -14,17 +21,9 @@ class ItemsInCategory extends React.Component {
 		this.setItemsList();
 	}
 
-	setCate() {
-		axios.get("/getItemsByCate/:ID").then((res) => {
-			if(res.data.length === 0){return;}
-			this.setState({
-				itemsList: res.data
-			})
-		});
-	}
 
     setItemsList() {
-    	axios.get("/getItemsByCate/:ID").then((res) => {
+    	axios.get("/getItemsByCate/" + this.state.cate).then((res) => {
 			if(res.data.length === 0){return;}
 			this.setState({
 				itemsList: res.data
@@ -50,11 +49,8 @@ class ItemsInCategory extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="banner">
-					<img className="banner_img" src="../img/banner.png" />
-				</div>
-				<div id="item_display">
-					<h2>replace by Category</h2>
+				<div>
+					<h2>{this.state.cate}</h2>
 					<div className="items">
 						{this.displayItems()}
 					</div>
@@ -65,4 +61,4 @@ class ItemsInCategory extends React.Component {
 	}
 }
 
-ReactDOM.render(<MainPage />, document.getElementById('content'));
+ReactDOM.render(<ItemsInCategory />, document.getElementById('itemsLsit'));

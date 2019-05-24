@@ -19,13 +19,17 @@
 	color: skyblue;
 }
 
+.row {
+
+}
+
 .col-6 {
 	padding: 15px 30px;
 }
 
 .item_category {
 	text-align: left;
-	margin: 10px 50px;
+	margin: 30px 50px;
 }
 
 .item_img {
@@ -36,7 +40,19 @@
 	border-bottom: 2px solid #e0dfdf;
 }
 
-.item_name, .item_value, .add_cart, .item_location, .item_owner, .item_description {
+.item_name, .item_value, .item_location, .item_owner, .item_description {
 	margin: 10px;
-	
+	color: #778899;
+}
+
+.add_cart {
+	margin: 10px;
+}
+
+.name, .value, .location,  .owner, .description{
+	margin: 10px;
+}
+
+.info {
+	text-align: left;
 }
