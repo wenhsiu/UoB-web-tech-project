@@ -1,5 +1,6 @@
-ItemName,Description,OwnerId,Exchange,Date,Details,Category,Location,Id
-"A picture of a bird","A picture of a bird makes your day!",newAccount1,nothing,2019-03-14,newAccount1_2019-3-14.jpg,4,"in the Uni",7
-"a scarf","A light gray scarf.",newAccount2,"a purse",2019-03-18,newAccount2_2019-3-18.jpg,4,UoB,8
-"A brown purse","A used purse",newAccount2,nothing,2019-03-18,newAccount2_2019-3-18_13-23-5.jpg,4,harbor,9
-"a book","This book suits children under age 5. Brand new!",newAccount1,"other books",2019-04-24,newAccount1_2019-4-24_14-23-31.jpg,2,"near MVB",11
+id,name
+1,Kitchen
+2,Stationery
+3,"Home And Living"
+4,Accesories
+5,Clothing

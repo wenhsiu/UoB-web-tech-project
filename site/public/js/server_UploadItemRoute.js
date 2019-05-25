@@ -71,7 +71,7 @@ router.post('/UploadItem/Details', upload.array('detail'), (req, res, next) => {
     const connection = req.app.locals.connection;    
     let dbCmd = "INSERT INTO items VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
     let dbCateCmd = "SELECT id FROM categories WHERE name = ?;";
-    
+    console.log(req.body["cate"]);
     connection.query(dbCateCmd, [req.body["cate"]], (err, rows)=> {
         if(err){
             res.status(400).send().end();

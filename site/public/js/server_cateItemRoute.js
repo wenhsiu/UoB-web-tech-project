@@ -59,9 +59,8 @@ router.get('/browse/:id', (req, res) => {
 })
 
 router.get('/browse/*', (req, res) => {
-    let filePath = req.params[0];
-    
-    res.sendFile(path.join(__dirname, '..', req.params[0]));    
+    let filePath = req.params[0];    
+    res.sendFile(path.join(__dirname, '..', filePath));    
 })
 
 router.get('/getItemsByCate/:id', (req, res) => {
@@ -79,32 +78,16 @@ router.get('/getItemsByCate/:id', (req, res) => {
         }
     })
 })
-/*
-router.get('/getOneItemById/:id', (req, res) => {
-    let ID = req.params.id;
-    let cmd = "SELECT * FROM items WHERE Id = ? ;";
 
-    const connection = res.app.locals.connection;
-    connection.query(cmd, ID, (err, rows) => {
-        if(err){
-            res.status(400).send().end();
-        }else{
-            res.send(rows);
-        }
-    })
-})
-*/
 router.get('/getOneItemById/:id', (req, res) => {
     let ID = req.params.id;
     let cmd = "SELECT * FROM items JOIN categories ON categories.id = items.Category WHERE items.Id = ? ;";
 
-    console.log("*" + req.params.id);
     const connection = res.app.locals.connection;
     connection.query(cmd, ID, (err, rows) => {
         if(err){
             res.status(400).send().end();
         }else{
-            console.log(rows);
             res.send(rows);
         }
     })
