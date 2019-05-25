@@ -19,14 +19,14 @@ class Header extends React.Component {
 	}
 
 	navigateToLogin() {
-        window.location.href="login.html";
+        window.location.href="/login.html";
     }
 
     uploadItem() {
     	if(this.getCookie("username") != "") {
-    		window.location.href="upload_item.html";
+    		window.location.href="/upload_item.html";
     	} else {
-    		window.location.href="login.html";
+    		window.location.href="/login.html";
     	}
     }
 
@@ -151,7 +151,7 @@ class Header extends React.Component {
 				<div className="title row align-items-center">
 					<div className="logo col-3 text-hide">
 						{this.displayLogo()}
-						<a href="homeItem.html" className="logo">Sharing within Bristol</a>
+						<a href="/homeItem.html" className="logo">Sharing within Bristol</a>
 						}
 					</div>
 					<div className="search col-3"></div>
