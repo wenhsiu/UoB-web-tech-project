@@ -20,6 +20,7 @@ let storage = multer.diskStorage({
       },
       filename: function (req, file, cb) {
         currDate = new Date();
+
         uploadDate = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate(); 
         uploadTime = currDate.getHours() + "-" + currDate.getMinutes() + "-" + currDate.getSeconds();
         imgName = username + '_' + uploadDate + "_" + uploadTime + ".jpg";
@@ -46,18 +47,16 @@ router.get('/Categories', (req, res) => {
 
 router.post('/UploadItem/Username', (req, res, next) => {        
     username = req.body.foo;
-    let createFolder = new Promise(function(resolve, reject){
-        try{
-            fs.mkdir(filePath);
-            resolve();
-        }catch(err){
-            reject("Cannot save pictures.");
-        }
-    });
 
     if(!fs.existsSync(filePath)){
-        createFolder.then(() => {res.status(200).send()})
-        .catch((err) => {res.status(400).send(err).end()});
+       try{
+        fs.mkdir(filePath);
+        }catch(err){
+            console.log("File path not available");
+            res.status(400).send();
+        }
+    }else{
+        res.status(200).send();
     }
 })
 
