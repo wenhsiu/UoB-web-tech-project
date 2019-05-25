@@ -65,7 +65,7 @@ router.get('/browse/*', (req, res) => {
 
 router.get('/getItemsByCate/:id', (req, res) => {
     let cateID = req.params.id;
-    let cmd = "SELECT I.ItemName AS ItemName, I.Details AS Details, C.name AS CateName FROM items I INNER JOIN categories C ON C.id = I.Category WHERE I.Category = ? ;";
+    let cmd = "SELECT ItemName, Details, Id FROM items WHERE Category = ? ;";
 
     const connection = res.app.locals.connection;
     connection.query(cmd, cateID, (err, rows) => {
@@ -94,6 +94,18 @@ router.get('/getOneItemById/:id', (req, res) => {
 
 router.get('/getImage/*', (req, res) => {        
     res.sendFile(picPath + "/" + req.url.split("/getImage/")[1]);
+})
+
+router.get('/getCateName/:id', (req, res) => {
+    let cmd = "SELECT name FROM categories WHERE id = ? ;";
+    const connection = res.app.locals.connection;
+    connection.query(cmd, req.params.id, (err, rows) => {
+        if(err){
+            res.status(400).send().end();
+        }else{
+            res.send(rows);
+        }
+    })
 })
 
 
