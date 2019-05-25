@@ -70,7 +70,7 @@ router.post('/UploadItem/Image', store.single('file'), (req, res, next) => {
 router.post('/UploadItem/Details', upload.array('detail'), (req, res, next) => {
     const connection = req.app.locals.connection;    
     let dbCmd = "INSERT INTO items VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    let dbCateCmd = "SELECT id FROM categories WHERE name = ?;";
+    let dbCateCmd = "SELECT id FROM categories WHERE name = ? ;";
     
     connection.query(dbCateCmd, [req.body["cate"]], (err, rows)=> {
         if(err){
