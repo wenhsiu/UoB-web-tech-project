@@ -32,7 +32,7 @@ class MainPage extends React.Component {
 					<div className="card" key = {element.Id.toString()}>
 						<img src={"/getImage/" + element.Details} className="card-img-top" alt={element.ItemName}/>
 						<div className="card-body">
-							<a href={"public/" + element.Id} className="stretched-link">{element.ItemName}</a>
+							<a href={"/public/" + element.Id} className="stretched-link">{element.ItemName}</a>
 						</div>
 					</div>
 				)

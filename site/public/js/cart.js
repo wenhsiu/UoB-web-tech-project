@@ -39,7 +39,7 @@ class Cart extends React.Component {
 					<div className="card" key = {element.Id.toString()}>
 						<img src={"/getImage/" + element.Details} className="card-img-top" alt={element.ItemName}/>
 						<div className="card-body"> 
-							<a href={"item/:id" + element.Id} className="stretched-link">{element.ItemName}</a>
+							<a href={"/item/:id" + element.Id} className="stretched-link">{element.ItemName}</a>
 						</div>
 					</div>
 				)
@@ -51,7 +51,7 @@ class Cart extends React.Component {
 		return (
 			<div>
 				<h3>Items in the Cart</h3>
-				<div class="items">
+				<div className="items">
 					{this.displayItems()}
 				</div>
 			</div>
