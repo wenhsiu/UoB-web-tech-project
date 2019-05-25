@@ -51,7 +51,7 @@ class Cart extends React.Component {
 		return (
 			<div>
 				<h3>Items in the Cart</h3>
-				<div class="items">
+				<div className="items">
 					{this.displayItems()}
 				</div>
 			</div>

@@ -42,15 +42,39 @@ router.get('/public/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', req.originalUrl));    
 })
 
+router.get('/browse/:id', (req, res) => {
+    let cmd = "SELECT COUNT(*) AS NUM FROM categories WHERE id = ? ;";
+    const connection = res.app.locals.connection;
+    connection.query(cmd, req.params.id, (err, rows) => {
+        if(err){
+            console.log(err);
+            res.status(400).send();
+        }else if(rows[0].NUM === 0){            
+            res.status(502).send();
+        }else{            
+            res.sendFile(path.join(__dirname, '..', 'browse.html'));
+            
+        }
+    })   
+})
+
+router.get('/browse/*', (req, res) => {
+    let filePath = req.params[0];
+    
+    res.sendFile(path.join(__dirname, '..', req.params[0]));    
+})
+
 router.get('/getItemsByCate/:id', (req, res) => {
     let cateID = req.param.id;
     let cmd = "SELECT ItemName, Details, Id FROM items WHERE Category = ? ;";
 
+    console.log("get Item by category called");
     const connection = res.app.locals.connection;
     connection.query(cmd, cateID, (err, rows) => {
         if(err){
             res.status(400).send().end();
         }else{
+            console.log(rows);
             res.send(rows);
         }
     })
@@ -58,15 +82,13 @@ router.get('/getItemsByCate/:id', (req, res) => {
 
 router.get('/getOneItemById/:id', (req, res) => {
     let ID = req.params.id;
-    let cmd = "SELECT * FROM items JOIN categories ON categories.id = items.Category WHERE items.Id = ? ;";
+    let cmd = "SELECT * FROM items WHERE Id = ? ;";
 
-    console.log("*" + req.params.id);
     const connection = res.app.locals.connection;
     connection.query(cmd, ID, (err, rows) => {
         if(err){
             res.status(400).send().end();
         }else{
-            console.log(rows);
             res.send(rows);
         }
     })

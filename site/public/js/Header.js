@@ -72,7 +72,7 @@ class Header extends React.Component {
     displayCategories() {
     	return(
 			this.state.cates.map((element) => {
-				return <li key = {element.id.toString()}><a href={"browse/" + element.id} className="stretched-link"> {element.name} </a></li>
+				return <li key = {element.id.toString()}><a href={"/browse/" + element.id} className="stretched-link"> {element.name} </a></li>
 			})
 		)
     }

@@ -1,10 +1,5 @@
 
 class ItemsInCategory extends React.Component {
-	state = {
-		cate: "",
-		itemsList:[],
-	};
-
 	constructor(props) {
 		super(props);
 		let path = window.location.pathname;
@@ -24,10 +19,11 @@ class ItemsInCategory extends React.Component {
 
     setItemsList() {
     	axios.get("/getItemsByCate/" + this.state.cate).then((res) => {
+			console.log(res.data);
 			if(res.data.length === 0){return;}
 			this.setState({
 				itemsList: res.data
-			})
+			})		
 		});
 	}
 
@@ -55,7 +51,6 @@ class ItemsInCategory extends React.Component {
 						{this.displayItems()}
 					</div>
 				</div>
-
 			</div>
 		)
 	}
