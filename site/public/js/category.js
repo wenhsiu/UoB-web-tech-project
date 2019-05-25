@@ -7,6 +7,7 @@ class ItemsInCategory extends React.Component {
 
 		this.state = {
 			cate: array[2],
+			cateName:"",
 			itemsList:[]
 		};
 
