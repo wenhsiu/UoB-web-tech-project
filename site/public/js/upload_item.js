@@ -135,6 +135,7 @@ class UploadItem extends React.Component {
                 <div className="row container-fluid">
                     <div id="image" className="col-6">
                         <input type="file" onChange={this.onChangeUploadItemImage}/>
+                        <img src={this.state.details.file} />
                     </div>
 
     				<div className="item col-6">
