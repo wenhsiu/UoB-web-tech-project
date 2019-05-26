@@ -114,6 +114,8 @@ class UploadItem extends React.Component {
         var detail = this.state.details;
         detail.cate = cate;
         this.setState({details: detail});
+
+        console.log(this.state.details.cate);
     }
 
     onSubmit(event){
@@ -122,13 +124,7 @@ class UploadItem extends React.Component {
 
         axios.all([this.postUsername(), this.postImage(), this.postDetails()]).then(function(res){
             console.log(res);
-        });
-        
-        for(var d of data){
-            console.log(d);
-        }
-
-        
+        });        
     }
 
     render(){

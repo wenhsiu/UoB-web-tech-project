@@ -30,10 +30,9 @@ router.get('/public/:id', (req, res) => {
             console.log(err);
             res.status(400).send();
         }else if(rows[0].NUM === 0){            
-            res.status(502).send();
+            res.status(404).send();
         }else{            
-            res.sendFile(path.join(__dirname, '..', 'item.html'));
-            
+            res.sendFile(path.join(__dirname, '..', 'item.html'));            
         }
     })
 })
