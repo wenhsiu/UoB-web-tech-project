@@ -1,0 +1,22 @@
+.card {
+	width: 200px;
+	text-align: center;
+	display: inline-block;
+	margin: 10px;
+}
+
+.card-title {
+	font-size: 14px;
+}
+
+.card-img-top {
+	/*width: 182px;*/
+	height: 182px;
+}
+
+@media screen and (max-width: 567px) {
+	.card {
+		width: 40%;
+		display: inline-block;
+	}
+}

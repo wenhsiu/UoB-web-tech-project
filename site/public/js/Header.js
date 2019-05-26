@@ -154,7 +154,7 @@ class Header extends React.Component {
 						<a href="/homeItem.html" className="logo">Sharing within Bristol</a>
 						}
 					</div>
-					<div className="login col-6">
+					<div className="loginUpload col-6">
 						<input className = "button_link" type="button" value="Upload Items" onClick={this.uploadItem} />
 						{this.setLoginOutButton()}
 						<a href="/cart.html">

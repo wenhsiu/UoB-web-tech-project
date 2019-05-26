@@ -1,27 +1,10 @@
 .items {
-	text-align: left;
-	margin: auto 10%;
+	width: 100%;
 }
 
 h2 {
-	margin: 20px 50px;
+	margin: 20px 3%;
 	text-align: left;
 	padding-bottom: 10px;
 	border-bottom: 2px solid #e0dfdf;
-}
-
-.card {
-	width: 200;
-	width: calc((100% / 6) - 10px);
-	margin-bottom: 10px;
-	display: inline-block;
-}
-
-.card-title {
-	font-size: 14px;
-}
-
-.card-img-top {
-	width: 182px;
-	height: 182px;
 }

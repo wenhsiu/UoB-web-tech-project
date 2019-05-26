@@ -11,24 +11,8 @@
 }
 
 h2 {
-	margin: 10px 50px;
+	margin: 10px 3%;
 	text-align: left;
-}
-
-.card {
-	width: 200px;
-	display: inline-block;
-}
-
-.card-title {
-	font-size: 14px;
-}
-
-.card-img-top {
-	width: 182px;
-	height: 182px;
-}
-
-.card-body {
-	height: 100px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #e0dfdf;
 }

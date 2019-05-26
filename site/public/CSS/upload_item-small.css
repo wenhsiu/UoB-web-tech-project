@@ -1,0 +1,22 @@
+@media screen and (max-width: 750px) {
+	.row {
+		display: block;
+	}
+
+	.post {
+		margin-left: 75%;
+	}
+
+	.container {
+		width: 100%;
+	}
+
+	.col-6 {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	#image {
+		width: 100%;
+	}
+}

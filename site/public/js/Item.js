@@ -34,8 +34,8 @@ class Item extends React.Component {
                 return(
                     <div key = {element.Id.toString()}>
                         <h3 className="item_category">{element.name}</h3>
-                        <div className="row" >
-                            <div className="col-6">
+                        <div className="row about_item" >
+                            <div className="col-6 item_img_part">
                                 <img className="item_img" src={"/getImage/" + element.Details} alt={element.ItemName} />
                             </div>
                             <div className="col-6 info">

@@ -1,0 +1,10 @@
+@media screen and (max-width: 567px) {
+	.card {
+		width: 40%;
+		display: inline-block;
+	}
+
+	.items {
+		text-align: center;
+	}
+}
