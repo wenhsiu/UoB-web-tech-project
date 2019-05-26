@@ -30,16 +30,15 @@ router.get('/public/:id', (req, res) => {
             console.log(err);
             res.status(400).send();
         }else if(rows[0].NUM === 0){            
-            res.status(502).send();
-        }else{            
-            res.sendFile(path.join(__dirname, '..', 'item.html'));
-            
+            res.status(404).send();
+        }else{
+            res.sendFile(path.join(__dirname, '..', 'item.html'));    
         }
     })
 })
 
-router.get('/public/*', (req, res) => {    
-    res.sendFile(path.join(__dirname, '..', '..', req.originalUrl));    
+router.get('/public/*', (req, res) => {
+        res.sendFile(path.join(__dirname, '..', '..', req.originalUrl));
 })
 
 router.get('/browse/:id', (req, res) => {
@@ -51,16 +50,15 @@ router.get('/browse/:id', (req, res) => {
             res.status(400).send();
         }else if(rows[0].NUM === 0){            
             res.status(502).send();
-        }else{            
-            res.sendFile(path.join(__dirname, '..', 'browse.html'));
-            
+        }else{
+            res.sendFile(path.join(__dirname, '..', 'browse.html'));            
         }
-    })   
+    })
 })
 
 router.get('/browse/*', (req, res) => {
-    let filePath = req.params[0];    
-    res.sendFile(path.join(__dirname, '..', filePath));    
+    let filePath = req.params[0];
+        res.sendFile(path.join(__dirname, '..', filePath));
 })
 
 router.get('/getItemsByCate/:id', (req, res) => {

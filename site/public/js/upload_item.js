@@ -111,12 +111,11 @@ class UploadItem extends React.Component {
 
     onClickCategories(){   
         var cate = document.getElementById("select").value;
-        console.log(document.getElementById("select").value);
         var detail = this.state.details;
         detail.cate = cate;
         this.setState({details: detail});
 
-
+        console.log(this.state.details.cate);
     }
 
     onSubmit(event){
@@ -125,13 +124,7 @@ class UploadItem extends React.Component {
 
         axios.all([this.postUsername(), this.postImage(), this.postDetails()]).then(function(res){
             console.log(res);
-        });
-        
-        for(var d of data){
-            console.log(d);
-        }
-
-        
+        });        
     }
 
     render(){
@@ -140,23 +133,23 @@ class UploadItem extends React.Component {
                 <div className="row container-fluid">
                     <div id="image" className="col-6">
                         <input type="file" onChange={this.onChangeUploadItemImage}/>
-                        <img src={this.state.details.file}/>            
                     </div>
-                    <div className="item col-6">
-                        <form>
-                            <input id="name" className="item_name" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item name" onChange={this.onChangeUploadItemDetails} />
-                        </form>
 
-                        <form>
-                            <input id="value" className="item_value" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="Exchange items/ value, ex: a cup of coffee" onChange={this.onChangeUploadItemDetails} />
-                        </form>
+    				<div className="item col-6">
+    					<form>
+    						<input id="name" className="item_name" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item name" onChange={this.onChangeUploadItemDetails} />
+    					</form>
 
-                        <form>
-                            <input id="location" className="item_location" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item location" onChange={this.onChangeUploadItemDetails} />
-                        </form>
+    					<form>
+    						<input id="value" className="item_value" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="Exchange items/ value, ex: a cup of coffee" onChange={this.onChangeUploadItemDetails} />
+    					</form>
 
-                        <form id="select_cate">
-                            <select id="select" className="item_category" onChange={this.onClickCategories}>                                     
+    					<form>
+    						<input id="location" className="item_location" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item location" onChange={this.onChangeUploadItemDetails} />
+    					</form>
+
+    					<form id="select_cate">
+                            <select id="select" className="item_category" onChange={this.onClickCategories}>
                                 <option>Select a category</option>
                                 {this.setSelectOption()};               
                             </select>
