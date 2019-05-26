@@ -1,10 +1,10 @@
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 770px) {
 	.row {
 		display: block;
 	}
 
 	.post {
-		margin-left: 75%;
+		margin-left: 25%;
 	}
 
 	.container {
@@ -18,5 +18,11 @@
 
 	#image {
 		width: 100%;
+	}
+}
+
+@media (min-width: 768px) {
+	.container {
+	    max-width: 800px;
 	}
 }
