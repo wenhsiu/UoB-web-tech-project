@@ -124,7 +124,9 @@ class UploadItem extends React.Component {
 
         axios.all([this.postUsername(), this.postImage(), this.postDetails()]).then(function(res){
             console.log(res);
-        });        
+        });
+
+        window.location.href="/mainpage.html";      
     }
 
     render(){
