@@ -3,12 +3,13 @@
 }
 
 .banner_img {
-	width: 700px
+	/*width: 50%;*/
 }
 
 #item_display {
 	width: 100%;
 }
+
 h2 {
 	margin: 10px 50px;
 	text-align: left;
@@ -26,4 +27,8 @@ h2 {
 .card-img-top {
 	width: 182px;
 	height: 182px;
+}
+
+.card-body {
+	height: 100px;
 }

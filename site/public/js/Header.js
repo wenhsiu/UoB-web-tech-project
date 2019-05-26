@@ -38,9 +38,9 @@ class Header extends React.Component {
 
     setLoginOutButton() {
     	if(this.getCookie("username") != "") {
-    		return <input className = "login_link" type="button" value="Logout" onClick={this.deleteCookie} />
+    		return <input className = "button_link" type="button" value="Logout" onClick={this.deleteCookie} />
     	} else {
-    		return <input className = "login_link" type="button" value="Login/Register" onClick={this.navigateToLogin} />
+    		return <input className = "button_link" type="button" value="Login/Register" onClick={this.navigateToLogin} />
     	}
     }
 
@@ -154,9 +154,8 @@ class Header extends React.Component {
 						<a href="/homeItem.html" className="logo">Sharing within Bristol</a>
 						}
 					</div>
-					<div className="search col-3"></div>
-					<div className="login col-5">
-						<input className = "login_link" type="button" value="Upload Items" onClick={this.uploadItem} />
+					<div className="login col-6">
+						<input className = "button_link" type="button" value="Upload Items" onClick={this.uploadItem} />
 						{this.setLoginOutButton()}
 						<a href="/cart.html">
 							<i className="fas fa-shopping-cart"></i>

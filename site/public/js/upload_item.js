@@ -38,11 +38,11 @@ class UploadItem extends React.Component {
     }
 
     setSelectOption() {
-		return(
-			this.state.cates.map((element) => {
-				return <option key = {element.id.toString()}> {element.name} </option>
-			})
-		);
+        return(
+            this.state.cates.map((element) => {
+                return <option key = {element.id.toString()}> {element.name} </option>
+            })
+        );
     }
     onChangeUploadItemImage(){
         var image = URL.createObjectURL(event.target.files[0]);
@@ -51,7 +51,7 @@ class UploadItem extends React.Component {
         detail.file = image;
         
         this.setState({            
-		    detials: detail
+            detials: detail
         });
     }
 
@@ -111,9 +111,12 @@ class UploadItem extends React.Component {
 
     onClickCategories(){   
         var cate = document.getElementById("select").value;
+        console.log(document.getElementById("select").value);
         var detail = this.state.details;
         detail.cate = cate;
         this.setState({details: detail});
+
+
     }
 
     onSubmit(event){
@@ -137,32 +140,32 @@ class UploadItem extends React.Component {
                 <div className="row container-fluid">
                     <div id="image" className="col-6">
                         <input type="file" onChange={this.onChangeUploadItemImage}/>
-                        <img src={this.state.details.file}/>			
-    				</div>
-    				<div className="item col-6">
-    					<form>
-    						<input id="name" className="item_name" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item name" onChange={this.onChangeUploadItemDetails} />
-    					</form>
+                        <img src={this.state.details.file}/>            
+                    </div>
+                    <div className="item col-6">
+                        <form>
+                            <input id="name" className="item_name" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item name" onChange={this.onChangeUploadItemDetails} />
+                        </form>
 
-    					<form>
-    						<input id="value" className="item_value" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="Exchange items/ value, ex: a cup of coffee" onChange={this.onChangeUploadItemDetails} />
-    					</form>
+                        <form>
+                            <input id="value" className="item_value" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="Exchange items/ value, ex: a cup of coffee" onChange={this.onChangeUploadItemDetails} />
+                        </form>
 
-    					<form>
-    						<input id="location" className="item_location" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item location" onChange={this.onChangeUploadItemDetails} />
-    					</form>
+                        <form>
+                            <input id="location" className="item_location" type="text" data-bind="textInput: filter, valueUpdate: 'afterkeydown'" maxLength="45" placeholder="item location" onChange={this.onChangeUploadItemDetails} />
+                        </form>
 
-    					<form id="select_cate">
-                            <select id="select" className="item_category" onClick={this.onClickCategories}>										
+                        <form id="select_cate">
+                            <select id="select" className="item_category" onChange={this.onClickCategories}>                                     
                                 <option>Select a category</option>
-                                {this.setSelectOption()};				
+                                {this.setSelectOption()};               
                             </select>
-    					</form>
+                        </form>
 
-    					<form>
-    						<textarea id="description" className="item_description" maxLength="200" placeholder="description" onChange={this.onChangeUploadItemDetails} ></textarea>
-    					</form>	
-    				</div>
+                        <form>
+                            <textarea id="description" className="item_description" maxLength="200" placeholder="description" onChange={this.onChangeUploadItemDetails} ></textarea>
+                        </form> 
+                    </div>
                 </div>
                 <div id="submit" className="row container-fluid">
                     <input className="button post" type="button" value="Post" onClick={this.onSubmit} />

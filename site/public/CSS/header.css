@@ -31,42 +31,15 @@ a:hover {
 	vertical-align: middle;
 }
 
-.search_area, .search_button {
-	width: 300px;
-	height: 40px;
-	padding: 0px 10px;
-	border: 1px solid #cccccc;
-	outline: none;
-	box-sizing: border-box;
-	transition: 0.3s;
-	position: relative;
-	font-size: 15px;
-	border-radius: 5px 0 0 5px;
-}
-
-.search_button {
-	width: 40px;
-	margin-left: -5px;
-	border-radius: 0 5px 5px 0;
-}
-
-.fa-search {
-	color: #013243;
-}
-
-.search_button:hover {
-	background-color: #cccccc;
-}
-
-.login_link {
+.button_link {
 	border: 1px solid #cccccc;
 	border-radius: 5px;
 	height: 35px;
 	width: 125px;
-	margin: 0 20px;
+	margin: 0 20px 0 20px;
 }
 
-.login_link:hover {
+.button_link:hover {
 	color: skyblue;
 	border: 2px solid skyblue;
 } 
@@ -95,8 +68,16 @@ ul {
 li {
 	position: relative;
 	display: inline-block;
-	width: calc((100% / 8) - 10px);
+	width: calc((100% / 6) - 10px);
 	margin-right: 10px;
 	vertical-align: middle;
 	text-align: center;
+}
+
+.col-3 {
+	max-width: 100%;
+}
+
+.col-6 {
+	padding: 15px 30px;
 }

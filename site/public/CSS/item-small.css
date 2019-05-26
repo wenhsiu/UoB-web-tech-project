@@ -1,0 +1,10 @@
+@media screen and (max-width: 750px) {
+	.row {
+		display: block;
+	}
+
+	.col-6 {
+		max-width: 100%;
+	}
+	
+}
