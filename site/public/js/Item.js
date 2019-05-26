@@ -11,8 +11,7 @@ class Item extends React.Component {
 
         this.setItemDetail = this.setItemDetail.bind(this);
         this.displayItem = this.displayItem.bind(this);
-
-        // this.getItemId();
+        
         this.setItemDetail();             
     }
 

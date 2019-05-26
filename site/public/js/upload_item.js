@@ -149,7 +149,7 @@ class UploadItem extends React.Component {
     					</form>
 
     					<form id="select_cate">
-                            <select id="select" className="item_category" onClick={this.onClickCategories}>										
+                            <select id="select" className="item_category" onChange={this.onClickCategories}>										
                                 <option>Select a category</option>
                                 {this.setSelectOption()};				
                             </select>
