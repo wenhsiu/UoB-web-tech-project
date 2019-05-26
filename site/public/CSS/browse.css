@@ -11,8 +11,7 @@ h2 {
 }
 
 .card {
-	/*width: 15%;*/
-	/*width: 198px;*/
+	width: 200;
 	width: calc((100% / 6) - 10px);
 	margin-bottom: 10px;
 	display: inline-block;
@@ -20,4 +19,9 @@ h2 {
 
 .card-title {
 	font-size: 14px;
+}
+
+.card-img-top {
+	width: 182px;
+	height: 182px;
 }
