@@ -25,15 +25,33 @@ router.get('/getImage/:details', (req, res) => {
     res.sendFile(picPath + "/" + req.params.details);
 })
 
+router.post('/checkLikeItem/:username', (req, res) => {
+    let username = req.params.username;
+    let itemId = req.body.itemId;
+
+    cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
+    const connection = res.app.locals.connection;
+    connection.query(cmd, [username, itemId], (err, rows) => {
+        if(err){
+            res.status(400).send();
+        }else{
+            if(rows.length === 0 || rows[0].LikeItem == false){
+                res.send(false); //false: haven't click like or dislike this item.
+            }else{                
+                res.send(true); //true: already liked this item.              
+            }
+        }
+    })
+})
+
 router.post('/likeItem/:username', (req, res) => {
     let username = req.params.username;
     let itemId = req.body.itemId;
 
     cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
     insertCmd = "INSERT INTO likes VALUES(?, ?, ?);";
-    updateCmd = "UPDATE items SET 'Username' = ?, 'ItemId' = ?, LikeItem = ?;"
+    updateCmd = "UPDATE items SET 'Username' = ?, 'ItemId' = ?, LikeItem = ?;";
 
-    const connection = res.app.locals.connection;
     connection.query(cmd, [username, itemId], (err, rows) => {
         if(err){
             res.status(400).send();
@@ -43,20 +61,21 @@ router.post('/likeItem/:username', (req, res) => {
                     if(err){
                         res.status(400).send();
                     }else{
-                        res.send('You liked the item.');
+                        res.status(200).send();
                     }
                 });
             }else{                
-                connection.query(updateCmd, [username, itemId, !rows[0].LikeItem], (err, subrows) => {
+                connection.query(updateCmd, [username, itemId, !rows[0].LikeItem], (err, subrows) =>{
                     if(err){
                         res.status(400).send();
                     }else{
-                        res.send('Set liked this item to ' + !rows[0].LikeItem);
+                        res.status(200).send();
                     }
-                })                
+                })
+                }
             }
         }
-    })
+    )
 })
 
 module.exports = router;
