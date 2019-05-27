@@ -25,9 +25,9 @@ router.get('/getImage/:details', (req, res) => {
     res.sendFile(picPath + "/" + req.params.details);
 })
 
-router.post('/likeItem/:itemId', (req, res) => {
-    let username = req.body.username;
-    let itemId = req.params.itemId;
+router.post('/likeItem/:username', (req, res) => {
+    let username = req.params.username;
+    let itemId = req.body.itemId;
 
     cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
     insertCmd = "INSERT INTO likes VALUES(?, ?, ?);";
