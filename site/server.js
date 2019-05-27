@@ -9,6 +9,7 @@ app.use(require('./public/js/server_loginRoute'));
 app.use(require('./public/js/server_registerRoute'));
 app.use(require('./public/js/server_UploadItemRoute'));
 app.use(require('./public/js/server_cateItemRoute'));
+app.use(require('./public/js/server_cartRoute'));
 
 db.connect();
 var connection = db.get();
