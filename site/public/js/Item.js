@@ -17,7 +17,8 @@ class Item extends React.Component {
         this.checkAdded = this.checkAdded.bind(this);
         this.addOrDelete = this.addOrDelete.bind(this);
 
-        this.setItemDetail();            
+        this.setItemDetail();
+        this.checkAdded();          
     }
 
     getCookie(cname) {
@@ -38,10 +39,9 @@ class Item extends React.Component {
 
     addCartButton() {
         if(this.getCookie("username") != "") {
-            console.log("isAdded: " + this.state.isAdded);
-            if(this.state.isAdded /*this.checkAdded(this)*/ == true) {
-                return <input className = "add_cart" type="button" value="Delete from Cart" onClick={this.addOrDelete}/>
-            } else if(this.checkAdded() == false) {
+            if(this.state.isAdded == true) {
+                return <input className = "add_cart" type="button" value="Delete" onClick={this.addOrDelete}/>
+            } else {
                 return <input className = "add_cart" type="button" value="Add to Cart" onClick={this.addOrDelete} />
             }
         }
@@ -51,12 +51,11 @@ class Item extends React.Component {
         let user = this.getCookie("username");
                
         axios.post('/checkLikeItem/' + user, this.state)
-        .then(function(response) {
+        .then((res) => {
             this.setState({
-                isAdded: response.data
+                isAdded: res.data
             })
             console.log("***" + this.state.isAdded);
-            // this.setState({isAdded: response.data})
         })
         .catch(function(error){
             console.log(error);
@@ -76,13 +75,15 @@ class Item extends React.Component {
             axios.post('/likeItem/' + user, this.state)
             .then(function(response){
                 if(response.status === 200) {
-                    console.log("Add to cart succeed");
+                    console.log("Add/delete to cart succeed");
                 }
             })
             .catch(function(error){
                 console.log(error);
             });
         }
+
+        window.location.href="/cart.html";
     }
 
     setItemDetail() {
@@ -114,10 +115,8 @@ class Item extends React.Component {
                                     <p className="name">{element.ItemName}</p>
                                     <h4 className="item_value">Exchange Value: </h4>
                                     <p className="value">{element.Exchange}</p>
-                                    {this.checkAdded}
                                     {this.addCartButton()}
-{/*                                    <input className = "add_cart" type="button" value="Add to Cart" />
-*/}                                </div>
+                               </div>
                                 <h4 className="item_location">Location: </h4>
                                 <p className="location">{element.Location}</p>
                                 <h4 className="item_owner"> Owner: </h4>

@@ -28,7 +28,6 @@ router.get('/getImage/:details', (req, res) => {
 router.post('/checkLikeItem/:username', (req, res) => {
     let username = req.params.username;
     let itemId = req.body.itemId;
-    console.log(itemId);
 
     cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
     const connection = res.app.locals.connection;
@@ -49,9 +48,10 @@ router.post('/likeItem/:username', (req, res) => {
     let username = req.params.username;
     let itemId = req.body.itemId;
 
+    const connection = req.app.locals.connection; 
     cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
     insertCmd = "INSERT INTO likes VALUES(?, ?, ?);";
-    updateCmd = "UPDATE items SET 'Username' = ?, 'ItemId' = ?, LikeItem = ?;";
+    updateCmd = "UPDATE likes SET Username = ?, ItemId = ?, LikeItem = ?;";
 
     connection.query(cmd, [username, itemId], (err, rows) => {
         if(err){
@@ -60,6 +60,7 @@ router.post('/likeItem/:username', (req, res) => {
             if(rows.length === 0){
                 connection.query(insertCmd, [username, itemId, true], (err, rows) => {
                     if(err){
+                        console.log("insert");
                         res.status(400).send();
                     }else{
                         res.status(200).send();
@@ -68,6 +69,7 @@ router.post('/likeItem/:username', (req, res) => {
             }else{                
                 connection.query(updateCmd, [username, itemId, !rows[0].LikeItem], (err, subrows) =>{
                     if(err){
+                        console.log("update");
                         res.status(400).send();
                     }else{
                         res.status(200).send();
