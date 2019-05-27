@@ -28,6 +28,7 @@ router.get('/getImage/:details', (req, res) => {
 router.post('/checkLikeItem/:username', (req, res) => {
     let username = req.params.username;
     let itemId = req.body.itemId;
+    console.log(itemId);
 
     cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
     const connection = res.app.locals.connection;

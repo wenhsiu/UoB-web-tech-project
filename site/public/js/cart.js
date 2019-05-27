@@ -61,7 +61,7 @@ class Cart extends React.Component {
 	render() {
 		return (
 			<div>
-				<h3>Items in the {this.state.username}'s Cart</h3>
+				<h3>Items in {this.getCookie("username")}'s Cart</h3>
 				<div className="items">
 					{this.displayItems()}
 				</div>

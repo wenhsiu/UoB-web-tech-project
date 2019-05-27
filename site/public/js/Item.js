@@ -6,37 +6,83 @@ class Item extends React.Component {
 
         this.state = {
             itemId: array[2],
-            itemDetail: []
+            itemDetail: [],
+            isAdded: null
         };
 
+        this.getCookie = this.getCookie.bind(this);
         this.setItemDetail = this.setItemDetail.bind(this);
         this.displayItem = this.displayItem.bind(this);
-        
-        this.setItemDetail();             
+        this.addCartButton = this.addCartButton.bind(this);
+        this.checkAdded = this.checkAdded.bind(this);
+        this.addOrDelete = this.addOrDelete.bind(this);
+
+        this.setItemDetail();            
+    }
+
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
     }
 
     addCartButton() {
-        if(this.getCookie("username") != "" && this.checkAdded() == true) {
-            return <input className = "add_cart" type="button" value="Delete from Cart" /*onClick={this.}*//>
-        } else {
-            return <input className = "add_cart" type="button" value="Add to Cart" /*onClick={this.}*//>
+        if(this.getCookie("username") != "") {
+            console.log("isAdded: " + this.state.isAdded);
+            if(this.state.isAdded /*this.checkAdded(this)*/ == true) {
+                return <input className = "add_cart" type="button" value="Delete from Cart" onClick={this.addOrDelete}/>
+            } else if(this.checkAdded() == false) {
+                return <input className = "add_cart" type="button" value="Add to Cart" onClick={this.addOrDelete} />
+            }
         }
     }
 
     checkAdded() {
+        let user = this.getCookie("username");
+               
+        axios.post('/checkLikeItem/' + user, this.state)
+        .then(function(response) {
+            this.setState({
+                isAdded: response.data
+            })
+            console.log("***" + this.state.isAdded);
+            // this.setState({isAdded: response.data})
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+
+        console.log(this.state.isAdded);
 
     }
 
-    addToCart() {
-        if(this.getCookie("username") == "") {
+    addOrDelete(e) {
+        let user = this.getCookie("username");
+
+        if(user == "") {
             window.location.href="/login.html";
         } else {
-            
+            e.preventDefault();                  
+            axios.post('/likeItem/' + user, this.state)
+            .then(function(response){
+                if(response.status === 200) {
+                    console.log("Add to cart succeed");
+                }
+            })
+            .catch(function(error){
+                console.log(error);
+            });
         }
-    }
-
-    delteFromCart() {
-        
     }
 
     setItemDetail() {
@@ -68,8 +114,10 @@ class Item extends React.Component {
                                     <p className="name">{element.ItemName}</p>
                                     <h4 className="item_value">Exchange Value: </h4>
                                     <p className="value">{element.Exchange}</p>
-                                    <input className = "add_cart" type="button" value="Add to Cart" />
-                                </div>
+                                    {this.checkAdded}
+                                    {this.addCartButton()}
+{/*                                    <input className = "add_cart" type="button" value="Add to Cart" />
+*/}                                </div>
                                 <h4 className="item_location">Location: </h4>
                                 <p className="location">{element.Location}</p>
                                 <h4 className="item_owner"> Owner: </h4>
