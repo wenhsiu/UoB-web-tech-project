@@ -15,7 +15,7 @@ router.get('/getItemsDetailedInfo/:username', (req, res) => {
     const connection = res.app.locals.connection;
     connection.query(cmd, req.params.id, (err, rows) => {
         if(err){
-            res.status(400).send().end();
+            res.status(400).send();
         }else{
             res.send(rows);
         }
@@ -24,6 +24,40 @@ router.get('/getItemsDetailedInfo/:username', (req, res) => {
 
 router.get('/getImage/:details', (req, res) => {       
     res.sendFile(picPath + "/" + req.params.details);
+})
+
+router.post('/likeItem/:itemId', (req, res) => {
+    let username = req.body.username;
+    let itemId = req.params.itemId;
+
+    cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
+    insertCmd = "INSERT INTO likes VALUES(?, ?, ?);";
+    updateCmd = "UPDATE items SET 'Username' = ?, 'ItemId' = ?, LikeItem = ?;"
+
+    const connection = res.app.locals.connection;
+    connection.query(cmd, [username, itemId], (err, rows) => {
+        if(err){
+            res.status(400).send();
+        }else{
+            if(rows.length === 0){
+                connection.query(insertCmd, [username, itemId, true], (err, rows) => {
+                    if(err){
+                        res.status(400).send();
+                    }else{
+                        res.send('You liked the item.');
+                    }
+                });
+            }else{                
+                connection.query(updateCmd, [username, itemId, !rows[0].LikeItem], (err, subrows) => {
+                    if(err){
+                        res.status(400).send();
+                    }else{
+                        res.send('Set liked this item to ' + !rows[0].LikeItem);
+                    }
+                })                
+            }
+        }
+    })
 })
 
 module.exports = router;
