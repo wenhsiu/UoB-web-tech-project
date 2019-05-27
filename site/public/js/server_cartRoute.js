@@ -51,34 +51,38 @@ router.post('/likeItem/:username', (req, res) => {
     const connection = req.app.locals.connection; 
     cmd = "SELECT LikeItem FROM likes WHERE Username = ? AND ItemId = ? ;";
     insertCmd = "INSERT INTO likes VALUES(?, ?, ?);";
-    updateCmd = "UPDATE likes SET Username = ?, ItemId = ?, LikeItem = ?;";
+    updateCmd = "UPDATE likes SET LikeItem = ? WHERE Username = ? AND ItemId = ? ;";
 
     connection.query(cmd, [username, itemId], (err, rows) => {
         if(err){
             res.status(400).send();
-        }else{
+        } else{
             if(rows.length === 0){
                 connection.query(insertCmd, [username, itemId, true], (err, rows) => {
                     if(err){
-                        console.log("insert");
+                        console.log("insert error");
                         res.status(400).send();
                     }else{
                         res.status(200).send();
                     }
                 });
-            }else{                
-                connection.query(updateCmd, [username, itemId, !rows[0].LikeItem], (err, subrows) =>{
+            }else {
+                let like;
+                
+                if(rows[0].LikeItem == 1) {like = false;}
+                else {like = true;}
+
+                connection.query(updateCmd, [like, username, itemId], (err, subrows) =>{
                     if(err){
-                        console.log("update");
+                        console.log("update error" + err);
                         res.status(400).send();
-                    }else{
+                    } else{
                         res.status(200).send();
                     }
-                })
-                }
+                });
             }
         }
-    )
+    })
 })
 
 module.exports = router;

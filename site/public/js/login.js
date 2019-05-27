@@ -5,6 +5,12 @@ class LoginForm extends React.Component{
         password: ""
     }
 
+    constructor(props) {
+        super(props);
+
+        this.getCookie = this.getCookie.bind(this);
+    }
+
     handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -26,11 +32,33 @@ class LoginForm extends React.Component{
             console.log(error);
         });
 
-        window.location.href="mainpage.html";           
+        if(this.getCookie("username") != "") {
+            window.location.href="/mainpage.html";
+        } else {
+            window.location.href="/register.html";
+        } 
     }
+
+    getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
+
     handleACChange = (e) => {
         this.setState({account: e.target.value})						
     }
+
     handlePWChange = (e) => {
         this.setState({password: e.target.value})				
     } 
