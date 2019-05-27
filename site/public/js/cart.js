@@ -1,19 +1,29 @@
 class Cart extends React.Component {
 	state = {
-		itemsList:[],
+		username:"",
+		itemsList:[]
 	};
 
 	constructor(props) {
 		super(props);
 
 		this.setItemsList = this.setItemsList.bind(this);
+		this.getCookie = this.getCookie.bind(this);
 		this.displayItems = this.displayItems.bind(this);
 
 		this.setItemsList();
+
+
 	}
 
 	setItemsList() {
-		
+		axios.get("/getItemsDetailedInfo/" + this.getCookie("username")).then((res) => {
+			console.log(res.data);
+			if(res.data.length === 0){return;}
+			this.setState({
+				itemsList: res.data
+			})		
+		});
 	}
 
 	getCookie(cname) {
@@ -26,6 +36,7 @@ class Cart extends React.Component {
             c = c.substring(1);
           }
           if (c.indexOf(name) == 0) {
+          	console.log(this.state.username);
             return c.substring(name.length, c.length);
           }
         }
@@ -33,13 +44,15 @@ class Cart extends React.Component {
     }
 
 	displayItems() {
+		// this.setState({username: this.getCookie("username")});
+
 		return(
 			this.state.itemsList.map((element) => {
 				return(
 					<div className="card" key = {element.Id.toString()}>
 						<img src={"/getImage/" + element.Details} className="card-img-top" alt={element.ItemName}/>
 						<div className="card-body"> 
-							<a href={"/item/:id" + element.Id} className="stretched-link">{element.ItemName}</a>
+							<a href={"/public/" + element.Id} className="stretched-link">{element.ItemName}</a>
 						</div>
 					</div>
 				)
@@ -50,7 +63,7 @@ class Cart extends React.Component {
 	render() {
 		return (
 			<div>
-				<h3>Items in the Cart</h3>
+				<h3>Items in the {this.state.username}'s Cart</h3>
 				<div className="items">
 					{this.displayItems()}
 				</div>

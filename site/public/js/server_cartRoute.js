@@ -9,7 +9,7 @@ let path = require('path');
 const picPath = path.join(__dirname, '..', 'uploadpics');
 
 router.get('/getItemsDetailedInfo/:username', (req, res) => {
-    let cmd = "SELECT I.ItemName, I.Details, I.Id FROM items I INNER JOIN likes L ON I.Id = L.ItemId " +
+    let cmd = "SELECT I.ItemName AS ItemName, I.Details AS Details, I.Id AS Id FROM items I INNER JOIN likes L ON I.Id = L.ItemId " +
               "INNER JOIN members M ON M.username = L.username WHERE M.username = ? AND L.LikeItem = true;";
 
     const connection = res.app.locals.connection;
