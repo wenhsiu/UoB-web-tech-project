@@ -17,9 +17,9 @@ class Item extends React.Component {
 
     addCartButton() {
         if(this.getCookie("username") != "" && this.checkAdded() == true) {
-            return <input className = "add_cart" type="button" value="Delete from Cart" onClick={this.}/>
+            return <input className = "add_cart" type="button" value="Delete from Cart" /*onClick={this.}*//>
         } else {
-            return <input className = "add_cart" type="button" value="Add to Cart" onClick={this.}/>
+            return <input className = "add_cart" type="button" value="Add to Cart" /*onClick={this.}*//>
         }
     }
 
