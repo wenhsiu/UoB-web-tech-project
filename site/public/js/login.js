@@ -26,17 +26,14 @@ class LoginForm extends React.Component{
                 d.setTime(d.getTime() + (24*60*60*1000));
                 let expire = "expires=" + d.toUTCString();
                 document.cookie = "username=" + response.data + ";" + expire + "path=/;";
+
+                window.location.href="/mainpage.html";
             }
             //TODO: display the password hint somewhere on the web page.            
-        }).catch(function(error){           
+        }).catch(function(error){ 
+            window.location.href="/register.html";          
             console.log(error);
-        });
-
-        if(this.getCookie("username") != "") {
-            window.location.href="/mainpage.html";
-        } else {
-            window.location.href="/register.html";
-        } 
+        });         
     }
 
     getCookie(cname) {
@@ -70,11 +67,11 @@ class LoginForm extends React.Component{
 				    <h1>Use Your Username to Login</h1>
 			    </header>
                 <form  onKeyPress={this.handleKeyPress}>
-                    <input className="username" type="text" /*data-bind="textInput: filter, valueUpdate: 'afterkeydown'"*/ placeholder="Username" onChange={this.handleACChange} />
+                    <input className="username" type="text" placeholder="Username" onChange={this.handleACChange} />
                     <i className="fas fa-user username_icon "></i>
                 </form>
                 <form  onKeyPress={this.handleKeyPress}>
-                    <input className="password" type="password" /*data-bind="textInput: filter, valueUpdate: 'afterkeydown'"*/ placeholder="Password" onChange={this.handlePWChange}/>								
+                    <input className="password" type="password" placeholder="Password" onChange={this.handlePWChange}/>								
                     <i className="fas fa-lock password_icon"></i>	
                 </form>
                 <form>		

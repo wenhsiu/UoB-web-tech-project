@@ -23,13 +23,16 @@ class Register extends React.Component{
                 d.setTime(d.getTime() + (24*60*60*1000));
                 let expire = "expires=" + d.toUTCString();
                 document.cookie = "username=" + response.data + ";" + expire + "path=/;";
+
+                window.location.href="/mainpage.html";
             }
         })
         .catch(function(error){
+            window.location.reload();
             console.log(error);
         });
 
-        window.location.href="mainpage.html";
+        
     }
     handleACChange = (e) => {
         this.setState({account: e.target.value})						
