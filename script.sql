@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS likes;
 DROP TABLE IF EXISTS items;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS categories;
@@ -23,4 +24,13 @@ CREATE TABLE members (
 	Username		VARCHAR(32) 	NOT NULL 	PRIMARY KEY,
 	Password     	VARCHAR(32)		NOT NULL,
 	PasswordHint	VARCHAR(128)  
+);
+
+CREATE TABLE likes(
+	Username		VARCHAR(32)	NOT NULL,
+	ItemId			int(11)		NOT NULL,
+	LikeItem		BOOLEAN,
+	PRIMARY KEY		(Username, ItemId),
+	FOREIGN KEY (Username) REFERENCES members(Username),
+	FOREIGN KEY (ItemId) REFERENCES items(id)
 );
