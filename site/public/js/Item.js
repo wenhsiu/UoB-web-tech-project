@@ -15,6 +15,30 @@ class Item extends React.Component {
         this.setItemDetail();             
     }
 
+    addCartButton() {
+        if(this.getCookie("username") != "" && this.checkAdded() == true) {
+            return <input className = "add_cart" type="button" value="Delete from Cart" onClick={this.}/>
+        } else {
+            return <input className = "add_cart" type="button" value="Add to Cart" onClick={this.}/>
+        }
+    }
+
+    checkAdded() {
+
+    }
+
+    addToCart() {
+        if(this.getCookie("username") == "") {
+            window.location.href="/login.html";
+        } else {
+            
+        }
+    }
+
+    delteFromCart() {
+        
+    }
+
     setItemDetail() {
         axios.get("/getOneItemById/" + this.state.itemId).then((res) => {
             if(res.data.length === 0){return;}

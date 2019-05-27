@@ -1,11 +1,10 @@
 class Cart extends React.Component {
-	state = {
-		username:"",
-		itemsList:[]
-	};
-
 	constructor(props) {
 		super(props);
+		this.state = {
+			user: "",
+			itemsList: []
+		};
 
 		this.setItemsList = this.setItemsList.bind(this);
 		this.getCookie = this.getCookie.bind(this);
@@ -17,13 +16,15 @@ class Cart extends React.Component {
 	}
 
 	setItemsList() {
-		axios.get("/getItemsDetailedInfo/" + this.getCookie("username")).then((res) => {
-			console.log(res.data);
-			if(res.data.length === 0){return;}
-			this.setState({
-				itemsList: res.data
-			})		
-		});
+		if(this.getCookie("username") != "") {
+			axios.get("/getItemsDetailedInfo/" + this.getCookie("username")).then((res) => {
+				console.log(res.data);
+				if(res.data.length === 0){return;}
+				this.setState({
+					itemsList: res.data
+				})		
+			});
+		}
 	}
 
 	getCookie(cname) {
@@ -36,7 +37,6 @@ class Cart extends React.Component {
             c = c.substring(1);
           }
           if (c.indexOf(name) == 0) {
-          	console.log(this.state.username);
             return c.substring(name.length, c.length);
           }
         }
@@ -44,8 +44,6 @@ class Cart extends React.Component {
     }
 
 	displayItems() {
-		// this.setState({username: this.getCookie("username")});
-
 		return(
 			this.state.itemsList.map((element) => {
 				return(
