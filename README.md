@@ -1,57 +1,36 @@
 # Introduction
 @authors: ny18270, ip18256
-This is a website for second-hand groceries exchange. The website pages include home, items, login & register, and upload item.
-Users will be directed to home page for login or sign up before browsing the available items.
-After logging in, users can browse items or post their own items to exchange something else or simply give it away.
 
-# Each Parts
+The website we built in this project is like an online flea market that users can post their unwanted stuff in exchange for other items. All users are required to register as a member first, and all members have to login so that they can start posting the items they’d like to exchange.
 
-## HTML
-Most of html files have been completed. For some specific pages such as the item page (display different category) and cart page, we are trying to implement React single page framework so as to reuse the template, and Javascript code will be required to request item details from server side.
+# Development
 
-TODO:
+## Back-End Development
 
-- Link all the pages.
+### Server
+To develop a website like this with relatively large scale could hardly organize the code in server since the routes defined to response different requests from client site could be in a considerable number. We used Node.js as our back-end developing framework, it provides a package manager, npm, that could easily organize the packages we used in the project. Additionally, we chose Express.js, a framework in Node.js to keep the code clean and nitty. By defining the routes in separated files also makes the maintenance much easier.
 
-## CSS
-We use Bootstrap in some of our pages. It helps us to organize the grids much easier.
+### Database
+This project uses mysql to store/access data in database. This database contains three tables hosting member information, item information and item types information respectively.
+And extra folder “uploadpics”, which contains the item pictures users upload, are considered as part pf the database.
 
-TODO:
+## Front-End Development
 
-- Most of the pages didn't has a responsive design. We might add it in after we match all the requirments.
+### HTML & JS
+Since we chose React,js, a JavaScript library, as our developing language of user interface. All the content in HTML <body> were built in separated JS files and using render function to return the body content. In addition, React uses JFX language, so that while rendering the content, we could use nearly the same HTML syntax, as shows in the following image. Thus, it provides a more straightforward and flexible development and design. Furthermore, we could render the same <header> in each pages without duplicating codes.
 
-## JS
-We use React.JS framework to organize our js interaction. These interactions include button clicks, upload data into database, and insert and display the data from the database to the client page.
+Using JavaScript made us easier to handle the client-side interaction, including button clicking, text typing, uploading image file, login cookie and so on. These functions could be seen in our entire project, especially in upload item page.
 
-TODO:
+### CSS
+Bootstrap, a CSS framework and grid system, is used in this project. It provides several build-in classes that developers can import directly, and different classes offer different component designs. Apart from Bootstrap, we also customized our own CSS files to organize the layout and website style. Additionally, we added Responsive Web Design in our project. By using @media query, we could have design out CSS codes depending on different width of screen.
 
-- create a React single page and use React.Js to insert the data into the HTML file in order to display items from different categories.
+### Dynamic pages
+Since our project is an online flea market, it is necessary to list all the items that are posted by users and display by categories. The item-browsing pages are dynamic. These pages hosting different parameters, such as category Id and item Id, to the server, so that server can query or update information to database accordingly, and response the requests from clients.
 
-## PNG
-Most of the images are stored in png, including the icons and logo.
+## Extension
 
-## SVG
-We haven't done any SVG file yet.
+### Cookie and Login
+Based on the design of our website, users are required to login or register first so that they can post items online. To keep tracking the user login information, we added cookies in the login and register functions. Once the login/register details are verified, the username will be put into cookies and stored in the web browser. If the user tries to post items without login, our website will redirect the user to Login Page.
 
-## Server
-All the server related code are developed in node.js. This server is able to respond to different get/post requests from the client side and adopts "express" module to organize different routes.
-Following routes are completed and working as expected,
-
-- server_loginRoute.js -- This route handles the user login requests. The submitted information will be compared with     existing members in the database. If no matching user data found in the database or the password is incorrect, the server will send back status code 400 or 401 respectively.
-- server_registerRoute.js -- This route handles the registration requests. If submitted information does not conflict with any existing user, the new member data will be inserted into the database.
-- server_UploadItemRoute.js -- This route handles the newly-created post requests. It sotres the item information into the dataabse, renames and saves the image file uploaded by user into folder "uploadpics"
-
-server_mysql.js is a customized module which builds, keeps and shares the database connection between different routes.
-
-TODO:
-
-- Respond clients' requests of displaying available items of specific categories.
-
-## Database
-This project uses mysql to store/access data in database. The current database contains all the tables required in this project is named "projectdb". The login information is hardcoded in server_mysql.js.
-
-## Dynamic pages
-TODO: 
-
-- Adding the features on browse page to requests different items information from the server and displays accordingly.
-
+### Single-Page
+One of the reasons that we chose React.js as our client-side JavaScript library is that it provides an easy way to create its own router which could build a single-page website. We tried to use it in our project to have the same header but different content. However, we failed to build the page during importing reat-router-dom to the js files. We are not sure if the reason we failed was that we didn’t initiate our project properly. We end up separated the HTML files into main page, browse page, and item page and insert the same header.js script.
